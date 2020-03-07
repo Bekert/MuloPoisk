@@ -19,10 +19,17 @@
                 </v-card>
             </v-row>
             <v-row class="d-flex justify-sm-center ma-0 pa-0 flex-column flex-sm-row">
-                <v-card color="black" height="200px" width="200px"></v-card>
-                <v-card color="black" height="200px" width="200px" class="my-10 my-sm-0 mx-sm-10"></v-card>
-                <v-card color="black" height="200px" width="200px"></v-card>
-            </v-row>
+                <collectionCard class="collection-card" 
+                    v-for="colCard in filmCollections" 
+                    :key="colCard.id" 
+                    :name="colCard.name" 
+                    :primaryColor="colCard.primaryColor"
+                    :secondaryColor="colCard.secondaryColor"
+                    :form="colCard.form"
+                    :type="colCard.type"
+                    :img="colCard.img"
+                />
+            </v-row> 
             <v-row class="ma-0 pa-0">
                 <v-card elevation="0" tile class="pa-0 ma-0 mt-3">
                     <sectionTitle :title="'Сериалы'"/>
@@ -53,9 +60,10 @@
 <script>
 import filmCard from '@/components/film-card'
 import sectionTitle from '@/components/index_components/section-title'
+import collectionCard from '@/components/index_components/collection-card'
 export default {
     components: {
-        filmCard, sectionTitle
+        filmCard, sectionTitle, collectionCard
     },
     data: () => ({
         wantToWatchList: [
@@ -170,6 +178,64 @@ export default {
                 name: 'Терминатор: Темные судьбы',
                 src: 'Terminator-Dark-Fate.jpg'
             }
+        ],
+        filmCollections: [
+            {
+                id: 1,
+                img: 'type3.jpeg',
+                name: 'Лучшие сериалы 2020',
+                primaryColor: 'green',
+                secondaryColor: 'blue',
+                type: 'linear-gradient',
+                form: 'to right'
+            },
+            {
+                id: 2,
+                img: 'type2.jpg',
+                name: 'Лучшие фильмы десятилетия',
+                primaryColor: 'orange',
+                secondaryColor: 'indigo',
+                type: 'linear-gradient',
+                form: 'to top'
+            },
+            {
+                id: 3,
+                img: 'type1.jpg',
+                name: 'ТОП 100',
+                primaryColor: 'blue',
+                secondaryColor: 'red',
+                type: 'linear-gradient',
+                form: 'to bottom left'
+            }
+        ],
+        serialCollection: [
+            {
+                id: 1,
+                img: 'type3.jpeg',
+                name: 'Лучшие сериалы 2020',
+                primaryColor: 'green',
+                secondaryColor: 'blue',
+                type: 'linear-gradient',
+                form: 'to right'
+            },
+            {
+                id: 2,
+                img: 'type2.jpg',
+                name: 'Лучшие фильмы десятилетия',
+                primaryColor: 'orange',
+                secondaryColor: 'indigo',
+                type: 'linear-gradient',
+                form: 'to top'
+            },
+            {
+                id: 3,
+                img: 'type1.jpg',
+                name: 'ТОП 100',
+                primaryColor: 'blue',
+                secondaryColor: 'red',
+                type: 'linear-gradient',
+                form: 'to bottom left'
+            }
         ]
     })
 };
@@ -196,5 +262,9 @@ export default {
         transition: 0.5s
         &:hover
             background-color: #a6a6a6
+    .collection-card 
+        &:nth-child(2)
+            margin-left: 50px
+            margin-right: 50px
 
 </style>
