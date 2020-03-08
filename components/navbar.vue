@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<v-navigation-drawer disable-resize-watcher app v-model="drawer" dark color="activePrimary" width="300">
+		<v-navigation-drawer disable-resize-watcher app v-model="drawer" dark color="activePrimary" width="300" style="z-index: 1001">
 			<v-list class="pa-0">
 				<mobileAccountMenu/>
 				<v-divider color="white"></v-divider>
