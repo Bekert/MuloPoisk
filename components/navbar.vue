@@ -53,7 +53,7 @@
 			</v-list>
 		</v-navigation-drawer>
 
-		<v-app-bar app dense color="primary" :absolute="$vuetify.breakpoint.md || $vuetify.breakpoint.lg || $vuetify.breakpoint.xl">
+		<v-app-bar app dense color="primary" :absolute="$vuetify.breakpoint.md || $vuetify.breakpoint.lg || $vuetify.breakpoint.xl" style="z-index: 1000">
 			<v-row class="mx-xs-n4 mx-md-auto">
 				<v-col class="d-block d-md-none pl-0 pr-0" cols="1">
 					<v-app-bar-nav-icon dark @click="drawer = !drawer"></v-app-bar-nav-icon>
