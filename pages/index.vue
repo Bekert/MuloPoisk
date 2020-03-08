@@ -18,8 +18,9 @@
                     </v-card-actions>
                 </v-card>
             </v-row>
-            <v-row class="d-flex justify-sm-center ma-0 pa-0 flex-column flex-sm-row">
-                <collectionCard class="collection-card" 
+            <v-row class="d-flex justify-center ma-0 pa-0 my-2">
+                <collectionCard 
+                    :class="{'collection-card': $vuetify.breakpoint.md || $vuetify.breakpoint.lg || $vuetify.breakpoint.xl || $vuetify.breakpoint.sm, 'collection-card-mob': $vuetify.breakpoint.xs}"
                     v-for="colCard in filmCollections" 
                     :key="colCard.id" 
                     :name="colCard.name" 
@@ -28,6 +29,7 @@
                     :form="colCard.form"
                     :type="colCard.type"
                     :img="colCard.img"
+                    :mobile="colCard.mobile"
                 />
             </v-row> 
             <v-row class="ma-0 pa-0">
@@ -38,6 +40,20 @@
                     </v-card-actions>
                 </v-card>
             </v-row>
+            <v-row class="d-flex justify-center ma-0 pa-0 my-2">
+                <collectionCard 
+                    :class="{'collection-card': $vuetify.breakpoint.md || $vuetify.breakpoint.lg || $vuetify.breakpoint.xl || $vuetify.breakpoint.sm, 'collection-card-mob': $vuetify.breakpoint.xs}"
+                    v-for="colCard in filmCollections" 
+                    :key="colCard.id" 
+                    :name="colCard.name" 
+                    :primaryColor="colCard.primaryColor"
+                    :secondaryColor="colCard.secondaryColor"
+                    :form="colCard.form"
+                    :type="colCard.type"
+                    :img="colCard.img"
+                    :mobile="colCard.mobile"
+                />
+            </v-row> 
         </v-col>
         <v-col xl="3" lg="4" cols="0" class="pa-0">
             <v-row class="ma-0 pa-0">
@@ -187,7 +203,8 @@ export default {
                 primaryColor: 'green',
                 secondaryColor: 'blue',
                 type: 'linear-gradient',
-                form: 'to right'
+                form: 'to right',
+                mobile: 'block'
             },
             {
                 id: 2,
@@ -196,7 +213,8 @@ export default {
                 primaryColor: 'orange',
                 secondaryColor: 'indigo',
                 type: 'linear-gradient',
-                form: 'to top'
+                form: 'to top',
+                mobile: 'block'
             },
             {
                 id: 3,
@@ -205,7 +223,8 @@ export default {
                 primaryColor: 'blue',
                 secondaryColor: 'red',
                 type: 'linear-gradient',
-                form: 'to bottom left'
+                form: 'to bottom left',
+                mobile: 'none'
             }
         ],
         serialCollection: [
@@ -216,7 +235,8 @@ export default {
                 primaryColor: 'green',
                 secondaryColor: 'blue',
                 type: 'linear-gradient',
-                form: 'to right'
+                form: 'to right',
+                mobile: 'block'
             },
             {
                 id: 2,
@@ -225,7 +245,8 @@ export default {
                 primaryColor: 'orange',
                 secondaryColor: 'indigo',
                 type: 'linear-gradient',
-                form: 'to top'
+                form: 'to top',
+                mobile: 'block'
             },
             {
                 id: 3,
@@ -234,7 +255,8 @@ export default {
                 primaryColor: 'blue',
                 secondaryColor: 'red',
                 type: 'linear-gradient',
-                form: 'to bottom left'
+                form: 'to bottom left',
+                mobile: 'none'
             }
         ]
     })
@@ -262,9 +284,14 @@ export default {
         transition: 0.5s
         &:hover
             background-color: #a6a6a6
-    .collection-card 
+    .collection-card
         &:nth-child(2)
-            margin-left: 50px
-            margin-right: 50px
+            margin-left: 50px !important
+            margin-right: 50px !important
+    .collection-card-mob
+        &:first-child
+            margin-right: 25px
+        &:last-child
+          margin-left: 25px      
 
 </style>
