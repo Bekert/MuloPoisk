@@ -68,6 +68,38 @@
                     </v-card-actions>
                 </v-card>
             </v-row>
+            <v-row class="ma-0 pa-0">
+                <v-card elevation="3" class="pa-2 ml-10">
+                    <v-card-title class="title">Фильмы в тренде</v-card-title>
+                    <div v-for="trend in filmsInTrends" :key="trend.id" class="d-flex align-center mb-2" style="cursor: pointer">
+                        <div style="font-size: 30px" class="mr-2">{{trend.id}}.</div>
+                        <v-hover v-slot:default="{hover}">
+                            <v-card @click class="d-flex align-center pa-2" outlined width="100%">
+                                <v-card width="60" height="80" elevation="0">
+                                    <v-img max-width="60" height="80" :src="'/img/films-posters/' + trend.src"></v-img>
+                                </v-card>
+                                <v-list-item-tile class="subtitle-1 ml-2" :class="{'red-lighten-1': hover}">{{trend.name}}</v-list-item-tile>
+                            </v-card>
+                        </v-hover>
+                    </div>
+                </v-card>
+            </v-row>
+            <v-row class="ma-0 pa-0 mt-5">
+                <v-card elevation="3" class="pa-2 ml-10">
+                    <v-card-title class="title">Популярные сериалы</v-card-title>
+                    <div v-for="trend in serialsInTrends" :key="trend.id" class="d-flex align-center mb-2" style="cursor: pointer">
+                        <div style="font-size: 30px" class="mr-2">{{trend.id}}.</div>
+                        <v-hover v-slot:default="{hover}">
+                            <v-card @click class="d-flex align-center pa-2" outlined width="100%">
+                                <v-card width="60" height="80" elevation="0">
+                                    <v-img max-width="60" height="80" :src="'/img/films-posters/' + trend.src"></v-img>
+                                </v-card>
+                                <v-list-item-tile class="subtitle-1 ml-2" :class="{'red-lighten-1': hover}">{{trend.name}}</v-list-item-tile>
+                            </v-card>
+                        </v-hover>
+                    </div>
+                </v-card>
+            </v-row>
         </v-col>
       </v-row>
   </div>
@@ -82,6 +114,60 @@ export default {
         filmCard, sectionTitle, collectionCard
     },
     data: () => ({
+        filmsInTrends: [
+            {
+                id: 1,
+                name: 'Джокер',
+                src: 'Joker.jpg'
+            },
+            {
+                id: 2,
+                name: 'Джокер',
+                src: 'Joker.jpg'
+            },
+            {
+                id: 3,
+                name: 'Терминатор: Темные Судьбы',
+                src: 'Terminator-Dark-Fate.jpg'
+            },
+            {
+                id: 4,
+                name: 'Терминатор: Темные Судьбы',
+                src: 'Terminator-Dark-Fate.jpg'
+            },
+            {
+                id: 5,
+                name: 'Терминатор: Темные Судьбы',
+                src: 'Terminator-Dark-Fate.jpg'
+            }
+        ],
+        serialsInTrends: [
+            {
+                id: 1,
+                name: 'Джокер',
+                src: 'Joker.jpg'
+            },
+            {
+                id: 2,
+                name: 'Джокер',
+                src: 'Joker.jpg'
+            },
+            {
+                id: 3,
+                name: 'Терминатор: Темные Судьбы',
+                src: 'Terminator-Dark-Fate.jpg'
+            },
+            {
+                id: 4,
+                name: 'Терминатор: Темные Судьбы',
+                src: 'Terminator-Dark-Fate.jpg'
+            },
+            {
+                id: 5,
+                name: 'Терминатор: Темные Судьбы',
+                src: 'Terminator-Dark-Fate.jpg'
+            }
+        ],
         wantToWatchList: [
             {
                 id: 1,
@@ -293,5 +379,6 @@ export default {
             margin-right: 25px
         &:last-child
           margin-left: 25px      
-
+    .red-lighten-1
+        color: #EF5350
 </style>
