@@ -1,7 +1,7 @@
 <template>
     <v-hover v-slot:default="{hover}">
         <v-card :class="{maxCardWidth: $vuetify.breakpoint.md || $vuetify.breakpoint.lg || $vuetify.breakpoint.xl, maxCardWidthMob: $vuetify.breakpoint.xs || $vuetify.breakpoint.sm}"  class="mt-2 mb-2" elevation="0" style="cursor: pointer">
-            <v-card :class="{'standard-elevation': hover}">
+            <v-card :class="{'standard-elevation': hover}" min-width="150" min-height="220">
                 <v-img 
                     :src="'/img/films-posters/' + src" 
                     class="film-image" 
