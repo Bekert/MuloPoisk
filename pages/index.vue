@@ -6,7 +6,7 @@
                 <v-card elevation="0" tile class="pa-0 ma-0 mt-3">
                     <sectionTitle :title="'В кино'"/>
                     <v-card-actions class="overflow-y-auto films-card align-start mt-5">
-                        <filmCard v-for="film in filmsInCinema" :key="film.id" class="ml-5 film-first-child" :name="film.name" :src="film.src"/>
+                        <filmCard v-for="film in filmsInCinema" :key="film.id" class="ml-5 film-first-child" :name="film.name" :src="film.src" :ENname="film.ENname"/>
                     </v-card-actions>
                 </v-card>
             </v-row>
@@ -14,7 +14,7 @@
                 <v-card elevation="0" tile class="pa-0 ma-0 mt-3">
                     <sectionTitle :title="'Онлайн'"/>
                     <v-card-actions class="overflow-y-auto films-card align-start mt-5">
-                        <filmCard v-for="film in filmsOnline" :key="film.id" class="ml-5 film-first-child" :name="film.name" :src="film.src"/>
+                        <filmCard v-for="film in filmsOnline" :key="film.id" class="ml-5 film-first-child" :name="film.name" :src="film.src" :ENname="film.ENname"/>
                     </v-card-actions>
                 </v-card>
             </v-row>
@@ -36,7 +36,7 @@
                 <v-card elevation="0" tile class="pa-0 ma-0 mt-3">
                     <sectionTitle :title="'Сериалы'"/>
                     <v-card-actions class="overflow-y-auto films-card align-start mt-5">
-                        <filmCard v-for="serial in serials" :key="serial.id" class="ml-5 film-first-child" :name="serial.name" :src="serial.src"/>
+                        <filmCard v-for="serial in serials" :key="serial.id" class="ml-5 film-first-child" :name="serial.name" :src="serial.src" :ENname="serial.ENname"/>
                     </v-card-actions>
                 </v-card>
             </v-row>
@@ -62,7 +62,7 @@
                     <v-card-actions>
                         <v-slide-group show-arrows>
                         <v-slide-item v-for="film in wantToWatchList" :key="film.id">
-                            <filmCard class="mx-15" :name="film.name" :src="film.src"/>
+                            <filmCard class="mx-15" :name="film.name" :src="film.src" :ENname="film.ENname"/>
                         </v-slide-item>
                         </v-slide-group>
                     </v-card-actions>
@@ -118,26 +118,31 @@ export default {
             {
                 id: 1,
                 name: 'Джокер',
+                ENname: 'Joker',
                 src: 'Joker.jpg'
             },
             {
                 id: 2,
                 name: 'Джокер',
+                ENname: 'Joker',
                 src: 'Joker.jpg'
             },
             {
                 id: 3,
                 name: 'Терминатор: Темные Судьбы',
+                ENname: 'Terminator: Dark Fate',
                 src: 'Terminator-Dark-Fate.jpg'
             },
             {
                 id: 4,
                 name: 'Терминатор: Темные Судьбы',
+                ENname: 'Terminator: Dark Fate',
                 src: 'Terminator-Dark-Fate.jpg'
             },
             {
                 id: 5,
                 name: 'Терминатор: Темные Судьбы',
+                ENname: 'Terminator: Dark Fate',
                 src: 'Terminator-Dark-Fate.jpg'
             }
         ],
@@ -145,26 +150,31 @@ export default {
             {
                 id: 1,
                 name: 'Джокер',
+                ENname: 'Joker',
                 src: 'Joker.jpg'
             },
             {
                 id: 2,
                 name: 'Джокер',
+                ENname: 'Joker',
                 src: 'Joker.jpg'
             },
             {
                 id: 3,
                 name: 'Терминатор: Темные Судьбы',
+                ENname: 'Terminator: Dark Fate',
                 src: 'Terminator-Dark-Fate.jpg'
             },
             {
                 id: 4,
                 name: 'Терминатор: Темные Судьбы',
+                ENname: 'Terminator: Dark Fate',
                 src: 'Terminator-Dark-Fate.jpg'
             },
             {
                 id: 5,
                 name: 'Терминатор: Темные Судьбы',
+                ENname: 'Terminator: Dark Fate',
                 src: 'Terminator-Dark-Fate.jpg'
             }
         ],
@@ -172,16 +182,19 @@ export default {
             {
                 id: 1,
                 name: 'Джокер',
+                ENname: 'Joker',
                 src: 'Joker.jpg'
             },
             {
                 id: 2,
                 name: 'Джокер',
+                ENname: 'Joker',
                 src: 'Joker.jpg'
             },
             {
                 id: 3,
                 name: 'Терминатор: Темные Судьбы',
+                ENname: 'Terminator: Dark Fate',
                 src: 'Terminator-Dark-Fate.jpg'
             }
         ],
@@ -189,31 +202,37 @@ export default {
             {
                 id: 1,
                 name: 'Джокер',
+                ENname: 'Joker',
                 src: 'Joker.jpg'
             },
             {
                 id: 2,
                 name: 'Джокер',
+                ENname: 'Joker',
                 src: 'Joker.jpg'
             },
             {
                 id: 3,
                 name: 'Терминатор: Темные судьбы',
+                ENname: 'Terminator: Dark Fate',
                 src: 'Terminator-Dark-Fate.jpg'
             },
             {
                 id: 4,
                 name: 'Джокер',
+                ENname: 'Joker',
                 src: 'Joker.jpg'
             },
             {
                 id: 5,
                 name: 'Терминатор: Темные судьбы',
+                ENname: 'Terminator: Dark Fate',
                 src: 'Terminator-Dark-Fate.jpg'
             },
             {
                 id: 6,
                 name: 'Терминатор: Темные судьбы',
+                ENname: 'Terminator: Dark Fate',
                 src: 'Terminator-Dark-Fate.jpg'
             }
         ],
@@ -221,31 +240,37 @@ export default {
             {
                 id: 1,
                 name: 'Джокер',
+                ENname: 'Joker',
                 src: 'Joker.jpg'
             },
             {
                 id: 2,
                 name: 'Джокер',
+                ENname: 'Joker',
                 src: 'Joker.jpg'
             },
             {
                 id: 3,
                 name: 'Джокер',
+                ENname: 'Joker',
                 src: 'Joker.jpg'
             },
             {
                 id: 4,
                 name: 'Джокер',
+                ENname: 'Joker',
                 src: 'Joker.jpg'
             },
             {
                 id: 5,
                 name: 'Джокер',
+                ENname: 'Joker',
                 src: 'Joker.jpg'
             },
             {
                 id: 6,
                 name: 'Терминатор: Темные судьбы',
+                ENname: 'Terminator: Dark Fate',
                 src: 'Terminator-Dark-Fate.jpg'
             }
         ],
@@ -253,31 +278,37 @@ export default {
             {
                 id: 1,
                 name: 'Джокер',
+                ENname: 'Joker',
                 src: 'Joker.jpg'
             },
             {
                 id: 2,
                 name: 'Джокер',
+                ENname: 'Joker',
                 src: 'Joker.jpg'
             },
             {
                 id: 3,
                 name: 'Джокер',
+                ENname: 'Joker',
                 src: 'Joker.jpg'
             },
             {
                 id: 4,
                 name: 'Джокер',
+                ENname: 'Joker',
                 src: 'Joker.jpg'
             },
             {
                 id: 5,
                 name: 'Джокер',
+                ENname: 'Joker',
                 src: 'Joker.jpg'
             },
             {
                 id: 6,
                 name: 'Терминатор: Темные судьбы',
+                ENname: 'Terminator: Dark Fate',
                 src: 'Terminator-Dark-Fate.jpg'
             }
         ],

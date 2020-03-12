@@ -1,11 +1,27 @@
 <template>
     <v-hover v-slot:default="{hover}">
-        <v-card :class="{maxCardWidth: $vuetify.breakpoint.md || $vuetify.breakpoint.lg || $vuetify.breakpoint.xl, maxCardWidthMob: $vuetify.breakpoint.xs || $vuetify.breakpoint.sm}"  class="mt-2 mb-2" elevation="0" style="cursor: pointer">
-            <v-card :class="{'standard-elevation': hover}" min-width="150" min-height="220">
+        <v-card 
+            :class="{
+                maxCardWidth: $vuetify.breakpoint.md || $vuetify.breakpoint.lg || $vuetify.breakpoint.xl, 
+                maxCardWidthMob: $vuetify.breakpoint.xs || $vuetify.breakpoint.sm
+            }"  
+            class="mt-2 mb-2" 
+            elevation="0" 
+            style="cursor: pointer" 
+            @click="$router.push(`/${routeName}`)"
+        >
+            <v-card 
+                :class="{'standard-elevation': hover}" 
+                min-width="150" 
+                min-height="220"
+            >
                 <v-img 
                     :src="'/img/films-posters/' + src" 
                     class="film-image" 
-                    :class="{maxImgSize: $vuetify.breakpoint.md || $vuetify.breakpoint.lg || $vuetify.breakpoint.xl, maxImgSizeMob: $vuetify.breakpoint.xs || $vuetify.breakpoint.sm}"
+                    :class="{
+                        maxImgSize: $vuetify.breakpoint.md || $vuetify.breakpoint.lg || $vuetify.breakpoint.xl, 
+                        maxImgSizeMob: $vuetify.breakpoint.xs || $vuetify.breakpoint.sm
+                    }"
                 ></v-img>
                 <v-fade-transition>
                     <v-overlay opacity="0.5" absolute v-if="hover">
@@ -14,8 +30,17 @@
                 </v-fade-transition>
             </v-card>
             <div class="text-center film-text" style="position: relative">
-                <div class="subtitle-1 film-name mt-1" :class="{'red-lighten-1': hover}">{{name}}</div>
-                <div class="rate subtitle-2 standard-elevation" :style="{'background-color': color}" :class="{rateSpacing: $vuetify.breakpoint.md || $vuetify.breakpoint.lg || $vuetify.breakpoint.xl, rateSpacingMob: $vuetify.breakpoint.xs || $vuetify.breakpoint.sm}">{{rate}}</div>
+                <div 
+                    class="subtitle-1 film-name mt-1" 
+                    :class="{'red-lighten-1': hover}"
+                >{{name}}</div>
+                <div class="rate subtitle-2 standard-elevation" 
+                    :style="{'background-color': color}" 
+                    :class="{
+                        rateSpacing: $vuetify.breakpoint.md || $vuetify.breakpoint.lg || $vuetify.breakpoint.xl, 
+                        rateSpacingMob: $vuetify.breakpoint.xs || $vuetify.breakpoint.sm
+                    }"
+                >{{rate}}</div>
             </div>
         </v-card>
     </v-hover>
@@ -23,12 +48,14 @@
 
 <script>
 export default {
-    props: ['name', 'src'],
+    props: ['name', 'src', 'ENname'],
     data: () => ({
         rate: 7.2,
         color: '',
+        routeName: ''
     }),
     mounted() {
+        this.routeName = this.ENname.replace(/\W/g, '')
         this.color = this.rate > 7 ? 'green' : 'orange'
     }
 }
