@@ -59,7 +59,7 @@
 					<v-app-bar-nav-icon dark @click="drawer = !drawer"></v-app-bar-nav-icon>
 				</v-col>
 				<v-col class="ma-auto" cols="5" md="2" xl="1">
-					<v-toolbar-title class="white--text title-name">MuloPoisk</v-toolbar-title>
+					<v-toolbar-title class="white--text title-name" @click="$router.push('/')" style="cursor: pointer">MuloPoisk</v-toolbar-title>
 				</v-col>
 				<v-row class="d-none d-md-flex" md="8" xl="9">
 					<v-menu content-class="no-border-radius" open-on-hover offset-y nudge-width="1">
