@@ -54,5 +54,6 @@ module.exports = {
         extend(config) {
             config.plugins.push(new ProvidePlugin({ serverConfig: "@/server.config" }))
         }
-    }
+    },
+    pageTransition: { name: "slide-x-transition", mode: "out-in" }
 }
