@@ -61,14 +61,182 @@
         <v-row class="ma-0 pa-0">
             <actors/>
         </v-row>
+        <v-row class="ma-0 pa-0" v-if="type === 'serial'">
+            <seasonGuide :seasonGuide="seasonGuide"/>
+        </v-row>
     </div>
 </template>
 
 <script>
 import actors from '../film_or_serial_components/actors'
+import seasonGuide from '../film_or_serial_components/season-guide'
 export default {
     components: {
-        actors
-    }
+        actors, seasonGuide
+    },
+    data: () => ({
+        type: 'serial',
+        seasonGuide: [
+            {
+                name: 'Сезон 1',
+                episods: [
+                    {
+                        index: 1,
+                        name: 'Пепега',
+                        duration: '1:53',
+                        rate: 8.2,
+                        myRate: 7
+                    },
+                    {
+                        index: 2,
+                        name: 'ОЛА',
+                        duration: '1:53',
+                        rate: 8.2,
+                        myRate: 7
+                    },
+                    {
+                        index: 3,
+                        name: 'Зузуга',
+                        duration: '1:53',
+                        rate: 8.2,
+                        myRate: 7
+                    },
+                    {
+                        index: 4,
+                        name: 'Клоун',
+                        duration: '1:53',
+                        rate: 6.2,
+                        myRate: 7
+                    },
+                    {
+                        index: 5,
+                        name: 'Восстание орков',
+                        duration: '1:53',
+                        rate: 4.2,
+                        myRate: 7
+                    }
+                ]
+            },
+            {
+                name: 'Сезон 1.5',
+                episods: [
+                    {
+                        index: 1,
+                        name: 'Пепега',
+                        duration: '1:53',
+                        rate: 8.2,
+                        myRate: 7
+                    },
+                    {
+                        index: 2,
+                        name: 'ОЛА',
+                        duration: '1:53',
+                        rate: 8.2,
+                        myRate: 7
+                    },
+                    {
+                        index: 3,
+                        name: 'Зузуга',
+                        duration: '1:53',
+                        rate: 8.2,
+                        myRate: 7
+                    },
+                    {
+                        index: 4,
+                        name: 'Клоун',
+                        duration: '1:53',
+                        rate: 6.2,
+                        myRate: 7
+                    },
+                    {
+                        index: 5,
+                        name: 'Восстание орков',
+                        duration: '1:53',
+                        rate: 4.2,
+                        myRate: 7
+                    }
+                ]
+            },
+            {
+                name: 'Сезон 2',
+                episods: [
+                    {
+                        index: 1,
+                        name: 'Пепега',
+                        duration: '1:53',
+                        rate: 8.2,
+                        myRate: 7
+                    },
+                    {
+                        index: 2,
+                        name: 'ОЛА',
+                        duration: '1:53',
+                        rate: 8.2,
+                        myRate: 7
+                    },
+                    {
+                        index: 3,
+                        name: 'Зузуга',
+                        duration: '1:53',
+                        rate: 8.2,
+                        myRate: 7
+                    },
+                    {
+                        index: 4,
+                        name: 'Клоун',
+                        duration: '1:53',
+                        rate: 6.2,
+                        myRate: 7
+                    },
+                    {
+                        index: 5,
+                        name: 'Восстание орков',
+                        duration: '1:53',
+                        rate: 4.2,
+                        myRate: 7
+                    }
+                ]
+            },{
+                name: 'Сезон 3',
+                episods: [
+                    {
+                        index: 1,
+                        name: 'Пепега',
+                        duration: '1:53',
+                        rate: 8.2,
+                        myRate: 7
+                    },
+                    {
+                        index: 2,
+                        name: 'ОЛА',
+                        duration: '1:53',
+                        rate: 8.2,
+                        myRate: 7
+                    },
+                    {
+                        index: 3,
+                        name: 'Зузуга',
+                        duration: '1:53',
+                        rate: 8.2,
+                        myRate: 7
+                    },
+                    {
+                        index: 4,
+                        name: 'Клоун',
+                        duration: '1:53',
+                        rate: 6.2,
+                        myRate: 7
+                    },
+                    {
+                        index: 5,
+                        name: 'Восстание орков',
+                        duration: '1:53',
+                        rate: 4.2,
+                        myRate: 7
+                    }
+                ]
+            }
+        ]
+    })
 }
 </script>
