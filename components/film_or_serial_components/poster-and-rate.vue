@@ -13,22 +13,22 @@
         </v-row>
         <v-row class="ma-0 pa-0">
             <div class="ma-auto d-flex">
-                <div class="green--text">
-                    <div class="d-inline display-3">8.44</div>
+                <div>
+                    <div class="d-inline display-3" :style="{color: rateColor}">{{rate}}</div>
                     <div class="grey--text d-inline display-1">/</div>
-                    <div class="d-inline headline">1564</div>
+                    <div class="d-inline headline" :style="{color: rateColor}">{{rateValue}}</div>
                 </div>
                 <div class="ml-2">
                     <v-menu offset-x :offset-y="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm"  close-on-content-click>
                         <template v-slot:activator="{ on }">
                             <v-btn text class="rate-btn" v-on="on" height="100%">
                                 <div class="grey--text d-inline headline">Моя оценка:</div>
-                                <div class="d-inline display-1 ml-2" :style="{color: color}">{{rate}}</div>
+                                <div class="d-inline display-1 ml-2" :style="{color: myRateColor}">{{myRate}}</div>
                             </v-btn>
                         </template>
                         <v-card color="white" class="pa-2" elevation="0" >
                             <div class="d-flex flex-column-reverse" >
-                                <div v-for="n in 10" :key="n" class="d-flex" @click="rate = n; getColor()" style="cursor: pointer">
+                                <div v-for="n in 10" :key="n" class="d-flex" @click="myRate = n; myRateColor = getColor(myRate)" style="cursor: pointer">
                                     <v-btn 
                                         class="ml-2 mt-2 title mr-2" 
                                         dark 
@@ -50,22 +50,26 @@
 <script>
 export default {
     data: () => ({
-        rate: '3',
-        color: ''
+        rate: 3.22,
+        rateValue: 1562,
+        myRate: 6,
+        myRateColor: '',
+        rateColor: ''
     }),
     mounted() {
-        this.getColor()
+        this.myRateColor = this.getColor(this.myRate)
+        this.rateColor = this.getColor(this.rate)
     },
     methods: {
-        getColor() {
-            if (this.rate >= 7) {
-                this.color = '#4CAF50'
+        getColor(typeRate) {
+            if (typeRate >= 7) {
+                return '#4CAF50'
             }
-            else if (this.rate < 7 && this.rate > 3) {
-                this.color = '#FF9800'
+            else if (typeRate < 7 && typeRate > 3) {
+                return '#FF9800'
             }
             else {
-                this.color = '#F44336'
+                return '#F44336'
             }
         }
     }
