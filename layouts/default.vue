@@ -2,10 +2,10 @@
     <v-app app>
         <v-content class="pt-0">
             <Navbar/>
-            <v-container class="mt-12 pa-0">
+            <v-container class="my-12 pa-0">
                 <nuxt/>
             </v-container>
-            <Footer class="mt-4"/>
+            <Footer class="pepega"/>
         </v-content>
     </v-app>
 </template>
@@ -20,3 +20,9 @@ export default {
 }
 </script>
 
+<style lang="sass" scoped>
+    .pepega
+        position: absolute
+        bottom: 0
+        width: 100%
+</style>
