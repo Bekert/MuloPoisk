@@ -2,7 +2,13 @@
     <div>
         <v-row class="ma-0 pa-0">
             <v-col cols="10" sm="12" xl="8" class="ma-auto">
-                <v-img src="/img/films-posters/Joker.jpg"></v-img>
+                <v-img src="/img/films-posters/Joker.jpg">
+                    <v-icon 
+                        class="bookmark-icon"
+                        :class="{'orange--text': bookmarkActive, 'grey--text': !bookmarkActive}"
+                        @click="bookmarkActive = !bookmarkActive"
+                    >bookmark</v-icon>
+                </v-img>
             </v-col>
         </v-row>
         <v-row class="ma-0 pa-0">
@@ -52,9 +58,10 @@ export default {
     data: () => ({
         rate: 3.22,
         rateValue: 1562,
-        myRate: 6,
+        myRate: '—',
         myRateColor: '',
-        rateColor: ''
+        rateColor: '',
+        bookmarkActive: true
     }),
     mounted() {
         this.myRateColor = this.getColor(this.myRate)
@@ -68,8 +75,11 @@ export default {
             else if (typeRate < 7 && typeRate > 3) {
                 return '#FF9800'
             }
-            else {
+            else if (typeRate <= 3) {
                 return '#F44336'
+            }
+            else {
+                return '#9E9E9E'
             }
         }
     }
@@ -83,4 +93,7 @@ export default {
         transition: 0.5s !important
         &:hover 
             background-color: rgba(0, 0, 0, 0.1)
+    .bookmark-icon
+        position: absolute
+        font-size: 60px
 </style>

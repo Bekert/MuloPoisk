@@ -85,7 +85,7 @@ export default {
                         name: 'Пепега',
                         duration: '1:53',
                         rate: 8.2,
-                        myRate: 7
+                        myRate: '—'
                     },
                     {
                         index: 2,

@@ -55,9 +55,6 @@ export default {
     data: () => ({
         color: ''
     }),
-    mounted() {
-        
-    },
     methods: {
         getColor(typeRate) {
             if (typeRate >= 7) {
@@ -66,8 +63,11 @@ export default {
             else if (typeRate < 7 && typeRate > 3) {
                 return '#FF9800'
             }
-            else {
+            else if (typeRate <= 3) {
                 return '#F44336'
+            }
+            else {
+                return '#9E9E9E'
             }
         }
     }
