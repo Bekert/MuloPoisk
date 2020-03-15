@@ -8,6 +8,7 @@
         tile
         height="48px"
         elevation="0"
+        to="/profile"
       >
         <v-avatar class="avatar-class mr-25" max-height="40px" max-width="40px">
           <v-img src="/img/account-image.jpg"></v-img>
@@ -15,7 +16,7 @@
       </v-btn>
     </template>
     <v-list color="primary" dark class="pa-0 no-border-radius">
-      <v-list-item @click>
+      <v-list-item @click="$router.push('/collection')">
         <v-list-item-icon class="mr-1">
           <v-icon>library_books</v-icon>
         </v-list-item-icon>

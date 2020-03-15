@@ -1,13 +1,13 @@
 <template>
   <div>
     <v-list class="pa-0" key="account-menu" v-if="auth">
-      <v-list-item @click>
+      <v-list-item @click="$router.push('/profile')">
         <v-list-item-avatar>
           <v-img src="/img/account-image.jpg"></v-img>
         </v-list-item-avatar>
         <v-list-item-title>CitRUS_Prod</v-list-item-title>
       </v-list-item>
-      <v-list-item class="pl-50" @click>
+      <v-list-item class="pl-50" @click="$router.push('/collection')">
         <v-list-item-icon class="mr-1">
           <v-icon>library_books</v-icon>
         </v-list-item-icon>
