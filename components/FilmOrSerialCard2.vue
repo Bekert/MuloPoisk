@@ -21,11 +21,11 @@
                 </v-img>
             </v-card>
         </v-hover>
-        
+
         <div class="d-flex justify-space-between" style="width: 100%">
             <div>
                 <div 
-                    class="pt-8 pl-8 title-name" 
+                    class="pt-6 pl-6 title-name" 
                     :class="{
                         'display-2': $vuetify.breakpoint.md || $vuetify.breakpoint.lg || $vuetify.breakpoint.xl,
                         'headline': $vuetify.breakpoint.xs || $vuetify.breakpoint.sm
