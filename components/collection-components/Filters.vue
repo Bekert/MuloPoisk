@@ -4,7 +4,7 @@
             <v-list-item>
                 <v-checkbox></v-checkbox>
                 <v-icon color="pink lighten-2">favorite</v-icon>
-                <v-list-item-title class="ml-1">Любимый фильм</v-list-item-title>
+                <v-list-item-title class="ml-1">Любимый {{type}}</v-list-item-title>
             </v-list-item>
             <v-list-item>
                 <v-list-item-title class="title">Год:</v-list-item-title>
@@ -31,6 +31,7 @@
 
 <script>
 export default {
+    props: ['type'],
     data: () => ({
         genres: ['Аниме', 'Биография', 'Боевик', 'Вестерн', 'Военный', 'Детектив', 'и еще миллиард'],
         yearFrom: 1900,
