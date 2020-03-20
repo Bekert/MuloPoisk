@@ -22,6 +22,9 @@
                 <v-checkbox></v-checkbox>
                 <v-list-item-title>{{genre}}</v-list-item-title>
             </v-list-item>
+            <v-list-item>
+                <v-btn color="blue" dark>Сохранить</v-btn>
+            </v-list-item>
         </v-list>
     </v-card>
 </template>
