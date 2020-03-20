@@ -18,6 +18,9 @@
                             <v-icon color="orange" large>search</v-icon>
                         </v-overlay>
                     </v-fade-transition>
+                    <v-card color="rgba(0, 0, 0, 0.5)" dark v-if="type === 'сериал'" tile elevation="0" class="d-flex justify-center">
+                        <v-card-title class="d-inline-block pa-4" :class="{'subtitle-2': $vuetify.breakpoint.xs || $vuetify.breakpoint.sm}">2 сезон, 3 серия</v-card-title>
+                    </v-card>
                 </v-img>
             </v-card>
         </v-hover>
@@ -88,6 +91,7 @@
 import MyRate from './rate-components/MyRate'
 import Rate from './rate-components/Rate'
 export default {
+    props: ['type'],
     components: {
         MyRate, Rate
     },
