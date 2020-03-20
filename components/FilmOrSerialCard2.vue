@@ -33,6 +33,32 @@
                     style="cursor: pointer"
                     @click="$router.push('./Joker')"
                 >Джокер</div>
+                <v-card elevation="0" max-width="600" max-height="140" v-if="!$vuetify.breakpoint.xs">
+                    <v-row class="ma-0 pa-0 ml-6 mt-2" v-if="!$vuetify.breakpoint.xs">
+                        <v-card color="amber" height="40" elevation="0" class="mr-2" :class="{'mt-2': !$vuetify.breakpoint.xl}">
+                            <v-card-text class="pa-2">Криминал</v-card-text>
+                        </v-card>
+                        <v-card color="amber" height="40" elevation="0" class="mr-2" :class="{'mt-2': !$vuetify.breakpoint.xl}">
+                            <v-card-text class="pa-2">Драма</v-card-text>
+                        </v-card>
+                        <v-card color="amber" height="40" elevation="0" class="mr-2" :class="{'mt-2': !$vuetify.breakpoint.xl}">
+                            <v-card-text class="pa-2">Триллер</v-card-text>
+                        </v-card>
+                        <v-card color="light-green" dark height="40" elevation="0" class="mr-2" :class="{'mt-2': !$vuetify.breakpoint.xl}" v-if="!$vuetify.breakpoint.sm"
+                        >
+                            <v-card-text class="pa-2">ТОП 250</v-card-text>
+                        </v-card>
+                        <v-card color="light-green" dark height="40" elevation="0" :class="{'mt-2': !$vuetify.breakpoint.xl}" v-if="!$vuetify.breakpoint.sm">
+                            <v-card-text class="pa-2">Онлайн: 3</v-card-text>
+                        </v-card>
+                    </v-row>
+                    <v-row class="pa-0 ma-0" v-if="$vuetify.breakpoint.xl">
+                        <v-card color="green" dark class="mx-6 mt-2">
+                            <v-card-title class="pa-0 pl-4 pt-2">Случайная рецензия:</v-card-title>
+                            <v-card-text class="">such as those seen with a v-menu and v-tooltip attached to the same activator button, need a particular setup in order to function correctly. Note: this same syntax is used for other nested activators such as v-dialog w/ v-tooltip.</v-card-text>
+                        </v-card>
+                    </v-row>
+                </v-card>
                 <div v-if="$vuetify.breakpoint.xs" class="mt-4">
                     <Rate :rate="rate" :rateValue="rateValue" class="ml-4"/>
                     <MyRate :myRate="myRate"/>
