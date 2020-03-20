@@ -6,7 +6,7 @@
         <v-col cols="8" sm="6" class="d-flex align-end pl-0">
             <v-icon style="transform: rotate(90deg)" @click="sortRotate = !sortRotate" :class="{'active-icon': sortRotate}">compare_arrows</v-icon>
             <v-select v-model="select" :items="items" hide-details dense label="Сортировать по"></v-select>
-            <v-menu offset-y allow-overflow>
+            <v-menu offset-y allow-overflow :close-on-content-click="false">
                 <template v-slot:activator="{ on }">
                     <v-icon v-on="on" large>filter_list</v-icon>
                 </template>
