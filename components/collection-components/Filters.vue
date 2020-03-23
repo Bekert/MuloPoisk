@@ -10,9 +10,9 @@
                 <v-list-item-title class="title">Год:</v-list-item-title>
             </v-list-item>
             <v-list-item>
-                <v-list-item-text>От</v-list-item-text>
+                <v-list-item-action-text>От</v-list-item-action-text>
                 <v-text-field v-model="yearFrom" dense single-line class="mx-4"></v-text-field>
-                <v-list-item-text>До</v-list-item-text>
+                <v-list-item-action-text>До</v-list-item-action-text>
                 <v-text-field v-model="yearTo" dense single-line class="mx-4"></v-text-field>
             </v-list-item>
             <v-list-item>

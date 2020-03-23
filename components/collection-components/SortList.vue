@@ -1,4 +1,4 @@
-<template>
+<template> 
     <div class="d-flex justify-space-between">
         <v-text-field placeholder="Поиск" class="pa-0 pr-8" hide-details single-line prepend-inner-icon="search"></v-text-field>
         <div class="d-flex flex-grow-1">

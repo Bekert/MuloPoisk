@@ -11,7 +11,7 @@
                     :class="{
                         maxImgSize: $vuetify.breakpoint.md || $vuetify.breakpoint.lg || $vuetify.breakpoint.xl, 
                         maxImgSizeMob: $vuetify.breakpoint.xs || $vuetify.breakpoint.sm
-                    }"
+                    }"      
                 >
                     <v-fade-transition>
                         <v-overlay opacity="0.5" absolute v-if="hover">
@@ -37,7 +37,7 @@
                     @click="$router.push('./Joker')"
                 >Джокер</div>
                 <v-card elevation="0" max-width="600" max-height="140" v-if="!$vuetify.breakpoint.xs">
-                    <v-row class="ma-0 pa-0 ml-6 mt-2" v-if="!$vuetify.breakpoint.xs">
+                    <v-row class="ma-0 pa-0 ml-6 mt-2">
                         <v-card color="amber" height="40" elevation="0" class="mr-2" :class="{'mt-2': !$vuetify.breakpoint.xl}">
                             <v-card-text class="pa-2">Криминал</v-card-text>
                         </v-card>
@@ -47,15 +47,14 @@
                         <v-card color="amber" height="40" elevation="0" class="mr-2" :class="{'mt-2': !$vuetify.breakpoint.xl}">
                             <v-card-text class="pa-2">Триллер</v-card-text>
                         </v-card>
-                        <v-card color="light-green" dark height="40" elevation="0" class="mr-2" :class="{'mt-2': !$vuetify.breakpoint.xl}" v-if="!$vuetify.breakpoint.sm"
-                        >
+                        <v-card color="light-green" dark height="40" elevation="0" class="mr-2" :class="{'mt-2': !$vuetify.breakpoint.xl}" v-if="!$vuetify.breakpoint.sm">
                             <v-card-text class="pa-2">ТОП 250</v-card-text>
                         </v-card>
                         <v-card color="light-green" dark height="40" elevation="0" :class="{'mt-2': !$vuetify.breakpoint.xl}" v-if="!$vuetify.breakpoint.sm">
                             <v-card-text class="pa-2">Онлайн: 3</v-card-text>
                         </v-card>
                     </v-row>
-                    <v-row class="pa-0 ma-0" v-if="$vuetify.breakpoint.xl">
+                    <v-row class="pa-0 ma-0" v-if="!$vuetify.breakpoint.xs && !$vuetify.breakpoint.sm && !$vuetify.breakpoint.md && !$vuetify.breakpoint.lg">
                         <v-card color="green" dark class="mx-6 mt-2">
                             <v-card-title class="pa-0 pl-4 pt-2">Случайная рецензия:</v-card-title>
                             <v-card-text class="">such as those seen with a v-menu and v-tooltip attached to the same activator button, need a particular setup in order to function correctly. Note: this same syntax is used for other nested activators such as v-dialog w/ v-tooltip.</v-card-text>
