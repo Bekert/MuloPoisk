@@ -13,7 +13,7 @@
         </v-list-item-icon>
         <v-list-item-title>Моя коллекция</v-list-item-title>
       </v-list-item>
-      <v-list-item class="pl-50" @click>
+      <v-list-item class="pl-50" @click="$router.push('/collection?want-to-watch')">
         <v-list-item-icon class="mr-1">
           <v-icon>bookmark</v-icon>
         </v-list-item-icon>
