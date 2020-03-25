@@ -11,13 +11,13 @@
 						</v-list-item-icon>
 						<v-list-item-title>Фильмы</v-list-item-title>
 					</template>
-					<v-list-item @click>
+					<v-list-item @click="$router.push('/in-cinema')">
 						<v-list-item-icon class="mr-1">
 							<v-icon>calendar_today</v-icon>
 						</v-list-item-icon>
 						<v-list-item-title>Премьеры</v-list-item-title>
 					</v-list-item>
-					<v-list-item @click>
+					<v-list-item @click="$router.push('/online')">
 						<v-list-item-icon class="mr-1">
 							<v-icon>home</v-icon>
 						</v-list-item-icon>
@@ -37,7 +37,7 @@
 						</v-list-item-icon>
 						<v-list-item-title>Сериалы</v-list-item-title>
 					</template>
-					<v-list-item @click>
+					<v-list-item @click="$router.push('/serials')">
 						<v-list-item-icon class="mr-1">
 							<v-icon>calendar_today</v-icon>
 						</v-list-item-icon>
@@ -78,13 +78,13 @@
 							</v-btn>
 						</template>
 						<v-list color="primary" dark class="pa-0 no-border-radius">
-							<v-list-item @click>
+							<v-list-item @click="$router.push('/in-cinema')">
 								<v-list-item-icon class="mr-1">
 									<v-icon>calendar_today</v-icon>
 								</v-list-item-icon>
 								<v-list-item-title>Премьеры</v-list-item-title>
 							</v-list-item>
-							<v-list-item @click>
+							<v-list-item @click="$router.push('/online')">
 								<v-list-item-icon class="mr-1">
 									<v-icon>home</v-icon>
 								</v-list-item-icon>
@@ -115,7 +115,7 @@
 							</v-btn>
 						</template>
 						<v-list color="primary" dark class="pa-0 no-border-radius">
-							<v-list-item @click>
+							<v-list-item @click="$router.push('/serials')">
 								<v-list-item-icon class="mr-1">
 									<v-icon>calendar_today</v-icon>
 								</v-list-item-icon>
