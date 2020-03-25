@@ -10,7 +10,7 @@
                 <template v-slot:activator="{ on }">
                     <v-icon v-on="on" large>filter_list</v-icon>
                 </template>
-                <Filters :type="type"/>
+                <Filters :type="type" :sortCollections="sortCollections"/>
             </v-menu>
         </v-col>
     </div>
@@ -19,7 +19,7 @@
 <script>
 import Filters from './Filters'
 export default {
-    props: ['type'],
+    props: ['type', 'sortCollections'],
     data: () => ({
         sortRotate: false,
         select: 'Дата просмотра',

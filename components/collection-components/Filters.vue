@@ -1,5 +1,6 @@
 <template>
     <v-card elevation="0">
+        <CollectionsList v-if="sortCollections"/>
         <v-list>
             <v-list-item>
                 <v-checkbox></v-checkbox>
@@ -30,12 +31,16 @@
 </template>
 
 <script>
+import CollectionsList from '../collections-components/collections-list'
 export default {
-    props: ['type'],
+    props: ['type', 'sortCollections'],
     data: () => ({
         genres: ['Аниме', 'Биография', 'Боевик', 'Вестерн', 'Военный', 'Детектив', 'и еще миллиард'],
         yearFrom: 1900,
         yearTo: 2020
-    })
+    }),
+    components: {
+        CollectionsList
+    }
 }
 </script>

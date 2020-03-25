@@ -36,7 +36,7 @@
                     style="cursor: pointer"
                     @click="$router.push('./Joker')"
                 >Джокер</div>
-                <v-card elevation="0" max-width="600" max-height="140" v-if="!$vuetify.breakpoint.xs">
+                <v-card elevation="0" max-width="600" max-height="140" v-if="!$vuetify.breakpoint.xs && details != 'hide'">
                     <v-row class="ma-0 pa-0 ml-6 mt-2">
                         <v-card color="amber" height="40" elevation="0" class="mr-2" :class="{'mt-2': !$vuetify.breakpoint.xl}">
                             <v-card-text class="pa-2">Криминал</v-card-text>
@@ -64,9 +64,10 @@
                 <div v-if="$vuetify.breakpoint.xs" class="mt-4">
                     <Rate :rate="rate" :rateValue="rateValue" class="ml-4"/>
                     <MyRate :myRate="myRate"/>
-                    <div class="ml-4">Дата выхода: 12.20.2020</div>
+                    <div class="ml-4" v-if="cardType != 'another'">Дата выхода: 12.20.2020</div>
                 </div>
             </div>
+            
             <div class="d-flex" v-if="!$vuetify.breakpoint.xs">
                 <div class="d-flex justify-center item-width">
                     <div class="my-auto">
@@ -77,6 +78,7 @@
                     <Rate :rate="rate" :rateValue="rateValue" :column="true"/>
                 </div>
                 <div 
+                    v-if="cardType != 'another'"
                     style="font-size: 20px" 
                     class="d-flex align-center justify-center item-width" 
                     :class="{'item-width-mob-date pl-2': $vuetify.breakpoint.xs || $vuetify.breakpoint.sm}"
@@ -90,7 +92,7 @@
 import MyRate from './rate-components/MyRate'
 import Rate from './rate-components/Rate'
 export default {
-    props: ['type'],
+    props: ['type', 'cardType', 'details'],
     components: {
         MyRate, Rate
     },
