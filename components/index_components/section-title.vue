@@ -1,6 +1,6 @@
 <template>
     <v-hover v-slot:default="{hover}">
-        <v-card-title :class="{'active-text': hover}" style="cursor: pointer" class="d-inline pl-2">
+        <v-card-title :class="{'active-text': hover}" style="cursor: pointer" class="d-inline pl-2" @click="$router.push(src)">
             {{title}} <v-icon class="title-icon" large>keyboard_arrow_right</v-icon>
         </v-card-title>
     </v-hover>
@@ -8,7 +8,7 @@
 
 <script>
 export default {
-    props: ['title']
+    props: ['title', 'src']
 }
 </script>
 
