@@ -4,7 +4,7 @@
         <v-col xl="9" lg="8" cols="12" class="pa-0">
             <v-row class="ma-0 pa-0"> 
                 <v-card elevation="0" tile class="pa-0 ma-0 mt-3">
-                    <sectionTitle :title="'В кино'"/>
+                    <sectionTitle :title="'В кино'" :src="'/in-cinema'"/>
                     <v-card-actions class="overflow-y-auto films-card align-start mt-5">
                         <filmCard v-for="film in filmsInCinema" :key="film.id" class="ml-5 film-first-child" :name="film.name" :src="film.src" :ENname="film.ENname"/>
                     </v-card-actions>
@@ -12,7 +12,7 @@
             </v-row>
             <v-row class="ma-0 pa-0">
                 <v-card elevation="0" tile class="pa-0 ma-0 mt-3">
-                    <sectionTitle :title="'Онлайн'"/>
+                    <sectionTitle :title="'Онлайн'" :src="'/online'"/>
                     <v-card-actions class="overflow-y-auto films-card align-start mt-5">
                         <filmCard v-for="film in filmsOnline" :key="film.id" class="ml-5 film-first-child" :name="film.name" :src="film.src" :ENname="film.ENname"/>
                     </v-card-actions>
@@ -34,7 +34,7 @@
             </v-row> 
             <v-row class="ma-0 pa-0">
                 <v-card elevation="0" tile class="pa-0 ma-0 mt-3">
-                    <sectionTitle :title="'Сериалы'"/>
+                    <sectionTitle :title="'Сериалы'" :src="'/serials'"/>
                     <v-card-actions class="overflow-y-auto films-card align-start mt-5">
                         <filmCard v-for="serial in serials" :key="serial.id" class="ml-5 film-first-child" :name="serial.name" :src="serial.src" :ENname="serial.ENname"/>
                     </v-card-actions>
