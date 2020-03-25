@@ -41,7 +41,8 @@
                     <v-icon v-else-if="!sortRateDown">arrow_drop_up</v-icon>
                 </div>
             </v-btn>
-            <v-btn 
+            <v-btn
+                v-if="sortType != 'another'"
                 class="pa-0 sort-item font-weight-regular" 
                 text 
                 tile 
@@ -59,6 +60,7 @@
 
 <script>
 export default {
+    props: ['sortType'],
     data: () => ({
         sortMyDate: true,
         sortMyDateDown: true,
