@@ -1,5 +1,4 @@
 const { ProvidePlugin } = require("webpack")
-const serverConfig = require("./server.config")
 import colors from 'vuetify/lib/util/colors'
 
 module.exports = {
@@ -19,9 +18,6 @@ module.exports = {
     css: [
         '@/assets/styles/global.sass',
         '@/assets/styles/_variables.sass'
-    ],
-    plugins: [
-        //{src: '@/plugins/socket', ssr: false}
     ],
     buildModules: [
         '@nuxtjs/vuetify',
@@ -47,13 +43,8 @@ module.exports = {
         }
     },
     server: {
-        port: serverConfig.port,
+        port: 3000,
         host: '0.0.0.0'
-    },
-    build: { 
-        extend(config) {
-            config.plugins.push(new ProvidePlugin({ serverConfig: "@/server.config" }))
-        }
     },
     pageTransition: { name: "slide-x-transition", mode: "out-in" }
 }
