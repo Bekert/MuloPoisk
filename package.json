@@ -10,10 +10,12 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@mdi/font": "^5.2.45",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cross-env": "^7.0.0",
     "express": "^4.17.1",
+    "just-cookie": "https://github.com/Bekert/just-cookie.git",
     "mongoose": "^5.9.6",
     "nuxt": "^2.12.1",
     "passport": "^0.4.1",
