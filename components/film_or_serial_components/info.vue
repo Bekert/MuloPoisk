@@ -46,197 +46,216 @@
             <v-card color="amber" height="40" elevation="0" class="mr-2">
                 <v-card-text class="pa-2">Триллер</v-card-text>
             </v-card>
-            <v-card color="light-green" dark height="40" elevation="0" class="mr-2">
+            <v-card
+                color="light-green"
+                dark
+                height="40"
+                elevation="0"
+                class="mr-2"
+            >
                 <v-card-text class="pa-2">ТОП 250</v-card-text>
             </v-card>
-            <v-card color="light-green" dark height="40" elevation="0" :class="{'mt-2': $vuetify.breakpoint.xs}">
+            <v-card
+                color="light-green"
+                dark
+                height="40"
+                elevation="0"
+                :class="{ 'mt-2': $vuetify.breakpoint.xs }"
+            >
                 <v-card-text class="pa-2">Онлайн: 3</v-card-text>
             </v-card>
         </v-row>
         <v-row class="ma-0 pa-0">
             <div class="mt-2">
-                Готэм, начало 1980-х годов. Комик Артур Флек живет с больной матерью, которая с детства учит его «ходить с улыбкой». Пытаясь нести в мир хорошее и дарить людям радость, Артур сталкивается с человеческой жестокостью и постепенно приходит к выводу, что этот мир получит от него не добрую улыбку, а ухмылку злодея Джокера.
+                Готэм, начало 1980-х годов. Комик Артур Флек живет с больной
+                матерью, которая с детства учит его «ходить с улыбкой». Пытаясь
+                нести в мир хорошее и дарить людям радость, Артур сталкивается с
+                человеческой жестокостью и постепенно приходит к выводу, что
+                этот мир получит от него не добрую улыбку, а ухмылку злодея
+                Джокера.
             </div>
         </v-row>
         <v-row class="ma-0 pa-0">
-            <actors/>
+            <actors />
         </v-row>
         <v-row class="ma-0 pa-0" v-if="type === 'serial'">
-            <seasonGuide :seasonGuide="seasonGuide"/>
+            <seasonGuide :seasonGuide="seasonGuide" />
         </v-row>
     </div>
 </template>
 
 <script>
-import actors from '../film_or_serial_components/actors'
-import seasonGuide from '../film_or_serial_components/season-guide'
+import actors from "../film_or_serial_components/actors"
+import seasonGuide from "../film_or_serial_components/season-guide"
 export default {
     components: {
-        actors, seasonGuide
+        actors,
+        seasonGuide,
     },
     data: () => ({
-        type: 'serial',
+        type: "serial",
         seasonGuide: [
             {
-                name: 'Сезон 1',
+                name: "Сезон 1",
                 episods: [
                     {
                         index: 1,
-                        name: 'Пепега',
-                        duration: '1:53',
+                        name: "Пепега",
+                        duration: "1:53",
                         rate: 8.2,
-                        myRate: '—'
+                        myRate: "—",
                     },
                     {
                         index: 2,
-                        name: 'ОЛА',
-                        duration: '1:53',
+                        name: "ОЛА",
+                        duration: "1:53",
                         rate: 8.2,
-                        myRate: 7
+                        myRate: 7,
                     },
                     {
                         index: 3,
-                        name: 'Зузуга',
-                        duration: '1:53',
+                        name: "Зузуга",
+                        duration: "1:53",
                         rate: 8.2,
-                        myRate: 7
+                        myRate: 7,
                     },
                     {
                         index: 4,
-                        name: 'Клоун',
-                        duration: '1:53',
+                        name: "Клоун",
+                        duration: "1:53",
                         rate: 6.2,
-                        myRate: 7
+                        myRate: 7,
                     },
                     {
                         index: 5,
-                        name: 'Восстание орков',
-                        duration: '1:53',
+                        name: "Восстание орков",
+                        duration: "1:53",
                         rate: 4.2,
-                        myRate: 7
-                    }
-                ]
+                        myRate: 7,
+                    },
+                ],
             },
             {
-                name: 'Сезон 1.5',
+                name: "Сезон 1.5",
                 episods: [
                     {
                         index: 1,
-                        name: 'Пепега',
-                        duration: '1:53',
+                        name: "Пепега",
+                        duration: "1:53",
                         rate: 8.2,
-                        myRate: 7
+                        myRate: 7,
                     },
                     {
                         index: 2,
-                        name: 'ОЛА',
-                        duration: '1:53',
+                        name: "ОЛА",
+                        duration: "1:53",
                         rate: 8.2,
-                        myRate: 7
+                        myRate: 7,
                     },
                     {
                         index: 3,
-                        name: 'Зузуга',
-                        duration: '1:53',
+                        name: "Зузуга",
+                        duration: "1:53",
                         rate: 8.2,
-                        myRate: 7
+                        myRate: 7,
                     },
                     {
                         index: 4,
-                        name: 'Клоун',
-                        duration: '1:53',
+                        name: "Клоун",
+                        duration: "1:53",
                         rate: 6.2,
-                        myRate: 7
+                        myRate: 7,
                     },
                     {
                         index: 5,
-                        name: 'Восстание орков',
-                        duration: '1:53',
+                        name: "Восстание орков",
+                        duration: "1:53",
                         rate: 4.2,
-                        myRate: 7
-                    }
-                ]
+                        myRate: 7,
+                    },
+                ],
             },
             {
-                name: 'Сезон 2',
+                name: "Сезон 2",
                 episods: [
                     {
                         index: 1,
-                        name: 'Пепега',
-                        duration: '1:53',
+                        name: "Пепега",
+                        duration: "1:53",
                         rate: 8.2,
-                        myRate: 7
+                        myRate: 7,
                     },
                     {
                         index: 2,
-                        name: 'ОЛА',
-                        duration: '1:53',
+                        name: "ОЛА",
+                        duration: "1:53",
                         rate: 8.2,
-                        myRate: 7
+                        myRate: 7,
                     },
                     {
                         index: 3,
-                        name: 'Зузуга',
-                        duration: '1:53',
+                        name: "Зузуга",
+                        duration: "1:53",
                         rate: 8.2,
-                        myRate: 7
+                        myRate: 7,
                     },
                     {
                         index: 4,
-                        name: 'Клоун',
-                        duration: '1:53',
+                        name: "Клоун",
+                        duration: "1:53",
                         rate: 6.2,
-                        myRate: 7
+                        myRate: 7,
                     },
                     {
                         index: 5,
-                        name: 'Восстание орков',
-                        duration: '1:53',
+                        name: "Восстание орков",
+                        duration: "1:53",
                         rate: 4.2,
-                        myRate: 7
-                    }
-                ]
-            },{
-                name: 'Сезон 3',
+                        myRate: 7,
+                    },
+                ],
+            },
+            {
+                name: "Сезон 3",
                 episods: [
                     {
                         index: 1,
-                        name: 'Пепега',
-                        duration: '1:53',
+                        name: "Пепега",
+                        duration: "1:53",
                         rate: 8.2,
-                        myRate: 7
+                        myRate: 7,
                     },
                     {
                         index: 2,
-                        name: 'ОЛА',
-                        duration: '1:53',
+                        name: "ОЛА",
+                        duration: "1:53",
                         rate: 8.2,
-                        myRate: 7
+                        myRate: 7,
                     },
                     {
                         index: 3,
-                        name: 'Зузуга',
-                        duration: '1:53',
+                        name: "Зузуга",
+                        duration: "1:53",
                         rate: 8.2,
-                        myRate: 7
+                        myRate: 7,
                     },
                     {
                         index: 4,
-                        name: 'Клоун',
-                        duration: '1:53',
+                        name: "Клоун",
+                        duration: "1:53",
                         rate: 6.2,
-                        myRate: 7
+                        myRate: 7,
                     },
                     {
                         index: 5,
-                        name: 'Восстание орков',
-                        duration: '1:53',
+                        name: "Восстание орков",
+                        duration: "1:53",
                         rate: 4.2,
-                        myRate: 7
-                    }
-                ]
-            }
-        ]
-    })
+                        myRate: 7,
+                    },
+                ],
+            },
+        ],
+    }),
 }
 </script>

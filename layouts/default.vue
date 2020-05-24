@@ -1,28 +1,29 @@
 <template>
     <v-app app>
         <v-content class="pt-0">
-            <Navbar/>
+            <Navbar />
             <v-container class="my-12 pa-0">
-                <nuxt/>
+                <nuxt />
             </v-container>
-            <Footer class="pepega"/>
+            <Footer class="pepega" />
         </v-content>
     </v-app>
 </template>
 
 <script>
-import Navbar from '@/components/navbar'
-import Footer from '@/components/footer'
+import Navbar from "@/components/navbar"
+import Footer from "@/components/footer"
 export default {
     components: {
-        Navbar, Footer
-    }
+        Navbar,
+        Footer,
+    },
 }
 </script>
 
 <style lang="sass" scoped>
-    .pepega
-        position: absolute
-        bottom: 0
-        width: 100%
+.pepega
+    position: absolute
+    bottom: 0
+    width: 100%
 </style>

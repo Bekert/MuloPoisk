@@ -12,7 +12,9 @@
                     </template>
                     <div v-for="n in 5" :key="n">
                         <v-list-item @click>
-                            <v-list-item-title class="pl-4">20{{n + 15}}</v-list-item-title>
+                            <v-list-item-title class="pl-4"
+                                >20{{ n + 15 }}</v-list-item-title
+                            >
                         </v-list-item>
                         <v-divider class="mx-4"></v-divider>
                     </div>
@@ -23,6 +25,6 @@
 </template>
 
 <style lang="sass" scoped>
-    .v-list-item__title
-        font-size: 20px
+.v-list-item__title
+    font-size: 20px
 </style>
