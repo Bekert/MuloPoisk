@@ -72,4 +72,54 @@ router.post('/register', async (req, res) => {
     })
 })
 
+router.post('/login', (req, res) => {
+    const { username, password } = req.body
+
+    if (!username) {
+        return res.status(400).json({
+            msg: 'Введите имя пользователя',
+        })
+    } else if (!password) {
+        return res.status(400).json({
+            msg: 'Введите пароль',
+        })
+    }
+
+    User.findOne({ username }).then(user => {
+        if (!user) {
+            return res.status(404).json({
+                msg: 'Данный пользователь не найден',
+                success: false,
+            })
+        }
+        bcrypt.compare(password, user.password).then(isMatch => {
+            if (isMatch) {
+                const payload = {
+                    _id: user._id,
+                    username: user.username,
+                    email: user.email,
+                }
+                jwt.sign(
+                    payload,
+                    process.env.SECRET_KEY,
+                    { expiresIn: 604800 },
+                    (err, token) => {
+                        res.status(200).json({
+                            success: true,
+                            user: user,
+                            token: `Bearer ${token}`,
+                            msg: 'Вы вошли',
+                        })
+                    }
+                )
+            } else {
+                return res.status(404).json({
+                    msg: 'Неверный пароль',
+                    success: false,
+                })
+            }
+        })
+    })
+})
+
 module.exports = router
