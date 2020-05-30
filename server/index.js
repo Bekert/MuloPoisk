@@ -17,6 +17,17 @@ async function start() {
 
     app.use(bodyParser.json())
 
+    // connect db
+    mongoose
+        .connect(process.env.MONGO_URL, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        })
+        .then(() => {
+            console.log(`DB ${process.env.MONGO_URL} started`)
+        })
+        .catch(err => console.log(`DB error: ${err}`))
+
     // require nuxt
     const nuxt = await loadNuxt(isDev ? 'dev' : 'start')
 
