@@ -1,4 +1,10 @@
 const { loadNuxt, build } = require('nuxt')
+const express = require('express')
+const bodyParser = require('body-parser')
+const passport = require('passport')
+const mongoose = require('mongoose')
+require('dotenv').config()
+// const cors = require('cors')
 
 const app = require('express')()
 const isDev = process.env.NODE_ENV !== 'production'
