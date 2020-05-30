@@ -28,6 +28,10 @@ async function start() {
         })
         .catch(err => console.log(`DB error: ${err}`))
 
+    // connect api
+    const users = require('./routes/api/users')
+    app.use('/api/users', users)
+
     // require nuxt
     const nuxt = await loadNuxt(isDev ? 'dev' : 'start')
 
