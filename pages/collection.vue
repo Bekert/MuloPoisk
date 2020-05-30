@@ -198,17 +198,17 @@
 </template>
 
 <script>
-import SortList from "../components/collection-components/SortList"
-import FilmOrSerialCard2 from "../components/FilmOrSerialCard2"
-import SortListMob from "../components/collection-components/SortListMob"
-import Filters from "../components/collection-components/Filters"
+import SortList from '../components/collection-components/SortList'
+import FilmOrSerialCard2 from '../components/FilmOrSerialCard2'
+import SortListMob from '../components/collection-components/SortListMob'
+import Filters from '../components/collection-components/Filters'
 export default {
     data: () => ({
-        tab: "film-rates",
+        tab: 'film-rates',
     }),
     mounted() {
-        if (this.$route.fullPath === "/collection?want-to-watch") {
-            this.tab = "want-to-watch"
+        if (this.$route.fullPath === '/collection?want-to-watch') {
+            this.tab = 'want-to-watch'
         }
     },
     components: {

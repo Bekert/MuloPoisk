@@ -32,7 +32,7 @@
 
 <script>
 export default {
-    props: ["name", "ENname"],
+    props: ['name', 'ENname'],
 }
 </script>
 

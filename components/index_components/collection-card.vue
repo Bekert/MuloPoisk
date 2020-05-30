@@ -39,22 +39,22 @@
 <script>
 export default {
     props: [
-        "primaryColor",
-        "secondaryColor",
-        "form",
-        "type",
-        "name",
-        "img",
-        "mobile",
+        'primaryColor',
+        'secondaryColor',
+        'form',
+        'type',
+        'name',
+        'img',
+        'mobile',
     ],
     data: () => ({
-        fontSize: "",
+        fontSize: '',
     }),
     mounted() {
         this.fontSize =
             this.$vuetify.breakpoint.xs || this.$vuetify.breakpoint.sm
-                ? "subtitle-2"
-                : "title"
+                ? 'subtitle-2'
+                : 'title'
     },
 }
 </script>

@@ -109,9 +109,9 @@ export default {
     data: () => ({
         rate: 3.22,
         rateValue: 1562,
-        myRate: "—",
-        myRateColor: "",
-        rateColor: "",
+        myRate: '—',
+        myRateColor: '',
+        rateColor: '',
         bookmarkActive: true,
     }),
     mounted() {
@@ -121,13 +121,13 @@ export default {
     methods: {
         getColor(typeRate) {
             if (typeRate >= 7) {
-                return "#4CAF50"
+                return '#4CAF50'
             } else if (typeRate < 7 && typeRate > 3) {
-                return "#FF9800"
+                return '#FF9800'
             } else if (typeRate <= 3) {
-                return "#F44336"
+                return '#F44336'
             } else {
-                return "#9E9E9E"
+                return '#9E9E9E'
             }
         },
     },

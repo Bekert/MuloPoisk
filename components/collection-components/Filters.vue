@@ -43,18 +43,18 @@
 </template>
 
 <script>
-import CollectionsList from "../collections-components/collections-list"
+import CollectionsList from '../collections-components/collections-list'
 export default {
-    props: ["type", "sortCollections"],
+    props: ['type', 'sortCollections'],
     data: () => ({
         genres: [
-            "Аниме",
-            "Биография",
-            "Боевик",
-            "Вестерн",
-            "Военный",
-            "Детектив",
-            "и еще миллиард",
+            'Аниме',
+            'Биография',
+            'Боевик',
+            'Вестерн',
+            'Военный',
+            'Детектив',
+            'и еще миллиард',
         ],
         yearFrom: 1900,
         yearTo: 2020,

@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import info from "../components/film_or_serial_components/info"
-import posterAndRate from "../components/film_or_serial_components/poster-and-rate"
+import info from '../components/film_or_serial_components/info'
+import posterAndRate from '../components/film_or_serial_components/poster-and-rate'
 export default {
     components: {
         info,

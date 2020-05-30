@@ -106,13 +106,13 @@ export default {
             auth: true,
             reg: false,
             valid: false,
-            name: "",
-            nameRules: [(v) => !!v || "Введите ваш никнейм"],
-            password: "",
-            passwordRules: [(v) => !!v || "Введите пароль"],
-            passwordReg: "",
+            name: '',
+            nameRules: [v => !!v || 'Введите ваш никнейм'],
+            password: '',
+            passwordRules: [v => !!v || 'Введите пароль'],
+            passwordReg: '',
             passwordRegRules: [
-                (v) => v === this.password || "Пароли не совпадают",
+                v => v === this.password || 'Пароли не совпадают',
             ],
         }
     },
@@ -123,8 +123,8 @@ export default {
                 const user = {
                     name: this.name,
                 }
-                this.password = ""
-                this.name = ""
+                this.password = ''
+                this.name = ''
             }
         },
         registerNewAccount() {
@@ -134,9 +134,9 @@ export default {
                     name: this.name,
                     password: this.password,
                 }
-                this.password = ""
-                this.regPassword = ""
-                this.name = ""
+                this.password = ''
+                this.regPassword = ''
+                this.name = ''
             }
         },
         logout() {

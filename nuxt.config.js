@@ -1,47 +1,40 @@
-const { ProvidePlugin } = require("webpack")
-import colors from "vuetify/lib/util/colors"
-import webpack from "webpack"
+const { ProvidePlugin } = require('webpack')
+import colors from 'vuetify/lib/util/colors'
+import webpack from 'webpack'
 
 module.exports = {
-    mode: "universal",
+    mode: 'universal',
     head: {
-        titleTemplate: "MuloPoisk",
+        titleTemplate: 'MuloPoisk',
         meta: [
-            { charset: "utf-8" },
+            { charset: 'utf-8' },
             {
-                name: "viewport",
-                content: "width=device-width, initial-scale=1",
+                name: 'viewport',
+                content: 'width=device-width, initial-scale=1',
             },
             {
-                hid: "description",
-                name: "description",
-                content: "Meta description",
+                hid: 'description',
+                name: 'description',
+                content: 'Meta description',
             },
         ],
         link: [
             {
-                rel: "stylesheet",
+                rel: 'stylesheet',
                 href:
-                    "https://fonts.googleapis.com/css?family=Indie+Flower&display=swap",
+                    'https://fonts.googleapis.com/css?family=Indie+Flower&display=swap',
             },
             {
-                href: "https://fonts.googleapis.com/icon?family=Material+Icons",
-                rel: "stylesheet",
+                href: 'https://fonts.googleapis.com/icon?family=Material+Icons',
+                rel: 'stylesheet',
             },
         ],
     },
-    css: ["@/assets/styles/global.sass", "@/assets/styles/_variables.sass"],
-    build: {
-        plugins: [
-            new webpack.ProvidePlugin({
-                cookie: "just-cookie",
-            }),
-        ],
-    },
-    buildModules: ["@nuxtjs/vuetify"],
-    modules: ["@nuxtjs/style-resources"],
+    css: ['@/assets/styles/global.sass', '@/assets/styles/_variables.sass'],
+    buildModules: ['@nuxtjs/vuetify'],
+    modules: ['@nuxtjs/style-resources'],
     styleResources: {
-        sass: ["@/assets/styles/_variables.sass"],
+        sass: ['@/assets/styles/_variables.sass'],
     },
     vuetify: {
         theme: {
@@ -57,7 +50,7 @@ module.exports = {
     },
     server: {
         port: 3000,
-        host: "0.0.0.0",
+        host: '0.0.0.0',
     },
-    pageTransition: { name: "slide-x-transition", mode: "out-in" },
+    pageTransition: { name: 'slide-x-transition', mode: 'out-in' },
 }

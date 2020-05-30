@@ -4,7 +4,7 @@
             <div class="title text-center py-4">Режиссер</div>
             <actorsCard
                 v-for="director in actorsAndGroups.filter(
-                    (el) => el.type === 'director'
+                    el => el.type === 'director'
                 )"
                 :key="director.id"
                 :name="director.name"
@@ -16,12 +16,12 @@
                 class="title py-4"
                 :class="{ 'pl-1': screenWriters, 'pl-3': !screenWriters }"
             >
-                {{ screenWriters ? "Сценаристы" : "Сценарист" }}
+                {{ screenWriters ? 'Сценаристы' : 'Сценарист' }}
             </div>
             <div class="d-flex actors-list">
                 <actorsCard
                     v-for="director in actorsAndGroups.filter(
-                        (el) => el.type === 'screenwriter'
+                        el => el.type === 'screenwriter'
                     )"
                     :key="director.id"
                     :name="director.name"
@@ -35,7 +35,7 @@
             <div class="d-flex actors-list">
                 <actorsCard
                     v-for="director in actorsAndGroups.filter(
-                        (el) => el.type === 'actor'
+                        el => el.type === 'actor'
                     )"
                     :key="director.id"
                     :name="director.name"
@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import actorsCard from "../actors-card"
+import actorsCard from '../actors-card'
 export default {
     components: {
         actorsCard,
@@ -57,42 +57,42 @@ export default {
         actorsAndGroups: [
             {
                 id: 1,
-                type: "director",
-                name: "Хоакин Феникс",
-                ENname: "JoaquinPhoenix",
-                groupName: "Режиссер",
+                type: 'director',
+                name: 'Хоакин Феникс',
+                ENname: 'JoaquinPhoenix',
+                groupName: 'Режиссер',
             },
             {
                 id: 2,
-                type: "screenwriter",
-                name: "Хоакин Феникс",
-                ENname: "JoaquinPhoenix",
+                type: 'screenwriter',
+                name: 'Хоакин Феникс',
+                ENname: 'JoaquinPhoenix',
             },
 
             {
                 id: 3,
-                type: "actor",
-                name: "Хоакин Феникс",
-                ENname: "JoaquinPhoenix",
+                type: 'actor',
+                name: 'Хоакин Феникс',
+                ENname: 'JoaquinPhoenix',
             },
             {
                 id: 4,
-                type: "actor",
-                name: "Хоакин Феникс",
-                ENname: "JoaquinPhoenix",
+                type: 'actor',
+                name: 'Хоакин Феникс',
+                ENname: 'JoaquinPhoenix',
             },
             {
                 id: 5,
-                type: "actor",
-                name: "Хоакин Феникс",
-                ENname: "JoaquinPhoenix",
+                type: 'actor',
+                name: 'Хоакин Феникс',
+                ENname: 'JoaquinPhoenix',
             },
         ],
         screenWriters: 0,
     }),
     mounted() {
-        this.actorsAndGroups.forEach((el) => {
-            if (el.type === "screenwriter") {
+        this.actorsAndGroups.forEach(el => {
+            if (el.type === 'screenwriter') {
                 this.screenWriters++
             }
         })

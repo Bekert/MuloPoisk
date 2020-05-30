@@ -182,10 +182,10 @@
 </template>
 
 <script>
-import MyRate from "./rate-components/MyRate"
-import Rate from "./rate-components/Rate"
+import MyRate from './rate-components/MyRate'
+import Rate from './rate-components/Rate'
 export default {
-    props: ["type", "cardType", "details"],
+    props: ['type', 'cardType', 'details'],
     components: {
         MyRate,
         Rate,

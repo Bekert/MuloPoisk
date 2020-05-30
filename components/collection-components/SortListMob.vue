@@ -34,13 +34,13 @@
 </template>
 
 <script>
-import Filters from "./Filters"
+import Filters from './Filters'
 export default {
-    props: ["type", "sortCollections"],
+    props: ['type', 'sortCollections'],
     data: () => ({
         sortRotate: false,
-        select: "Дата просмотра",
-        items: ["Дата просмотра", "Моя оценка", "Рейтинг", "Дата выхода"],
+        select: 'Дата просмотра',
+        items: ['Дата просмотра', 'Моя оценка', 'Рейтинг', 'Дата выхода'],
     }),
     components: {
         Filters,

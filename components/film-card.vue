@@ -65,15 +65,15 @@
 
 <script>
 export default {
-    props: ["name", "src", "ENname"],
+    props: ['name', 'src', 'ENname'],
     data: () => ({
         rate: 7.2,
-        color: "",
-        routeName: "",
+        color: '',
+        routeName: '',
     }),
     mounted() {
-        this.routeName = this.ENname.replace(/\W/g, "")
-        this.color = this.rate > 7 ? "green" : "orange"
+        this.routeName = this.ENname.replace(/\W/g, '')
+        this.color = this.rate > 7 ? 'green' : 'orange'
     },
 }
 </script>

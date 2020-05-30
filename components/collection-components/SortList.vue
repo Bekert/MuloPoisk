@@ -94,7 +94,7 @@
 
 <script>
 export default {
-    props: ["sortType"],
+    props: ['sortType'],
     data: () => ({
         sortMyDate: true,
         sortMyDateDown: true,

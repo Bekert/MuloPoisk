@@ -195,8 +195,8 @@
 </template>
 
 <script>
-import accountMenu from "./navbar_components/account-menu"
-import mobileAccountMenu from "./navbar_components/account-menu-mobile"
+import accountMenu from './navbar_components/account-menu'
+import mobileAccountMenu from './navbar_components/account-menu-mobile'
 export default {
     data: () => ({
         drawer: false,

@@ -17,12 +17,7 @@
 </template>
 
 <script>
-import cookie from "just-cookie"
 export default {
     data: () => ({}),
-    mounted() {
-        console.log(Cookie.get("pepega"))
-        Cookie.get
-    },
 }
 </script>
