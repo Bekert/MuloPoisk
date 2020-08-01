@@ -17,6 +17,13 @@ async function start() {
 
     app.use(bodyParser.json())
 
+    // initilialize passport
+    app.use(passport.initialize())
+
+    const passportConfig = require('./api/config/passport')
+
+    passportConfig(passport)
+
     // connect db
     mongoose
         .connect(process.env.MONGO_URL, {
