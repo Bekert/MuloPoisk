@@ -34,6 +34,7 @@ module.exports = {
         { name: 'server' },
         { name: 'server/api' },
         { name: 'configs' },
+        { name: 'package.json' },
     ],
 
     messages: {
