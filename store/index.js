@@ -11,9 +11,9 @@ export const getters = {
 }
 
 export const mutations = {
-    auth_success(state, token, user) {
-        state.token = token
-        state.user = user
+    login_success(state, params) {
+        state.token = params[0]
+        state.user = params[1]
         state.status = 'success'
     },
     logout(state) {
@@ -34,9 +34,21 @@ export const actions = {
             const user = res.data.user
             localStorage.setItem('token', token)
             this.$axios.defaults.headers.common['Authorization'] = token
-            commit('auth_success', token, user)
+            commit('login_success', [token, user])
         }
         return res
+    },
+    async register({ commit, dispatch }, user) {
+        let res = await this.$axios.post(
+            'http://localhost:3000/api/users/register',
+            user
+        )
+        if (res.data.success) {
+            await dispatch('login', {
+                username: user.username,
+                password: user.password,
+            })
+        }
     },
     logout({ commit }) {
         localStorage.removeItem('token')

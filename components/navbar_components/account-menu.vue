@@ -23,7 +23,7 @@
                     max-width="40px"
                 >
                     <v-img src="/img/account-image.jpg"></v-img> </v-avatar
-                >CitRUS_Prod
+                >{{ $store.state.user.username }}
             </v-btn>
         </template>
         <v-list color="primary" dark class="pa-0 no-border-radius">
@@ -88,13 +88,20 @@
                 </v-list>
                 <v-list v-else-if="reg">
                     <v-list-item>
-                        <v-list-item-tile>Регистрация</v-list-item-tile>
+                        <v-list-item-title>Регистрация</v-list-item-title>
                     </v-list-item>
                     <v-list-item>
                         <v-text-field
                             v-model="username"
                             :rules="nameRules"
                             placeholder="Придумайте никмейм"
+                        ></v-text-field>
+                    </v-list-item>
+                    <v-list-item>
+                        <v-text-field
+                            v-model="email"
+                            :rules="emailRules"
+                            placeholder="Напишите свой email"
                         ></v-text-field>
                     </v-list-item>
                     <v-list-item>
@@ -106,8 +113,8 @@
                     </v-list-item>
                     <v-list-item>
                         <v-text-field
-                            v-model="passwordReg"
-                            :rules="passwordRegRules"
+                            v-model="confirmPassword"
+                            :rules="confirmPasswordRules"
                             placeholder="Повторите пароль"
                         ></v-text-field>
                     </v-list-item>
@@ -145,8 +152,10 @@ export default {
             nameRules: [v => !!v || 'Введите ваш никнейм'],
             password: '',
             passwordRules: [v => !!v || 'Введите пароль'],
-            passwordReg: '',
-            passwordRegRules: [
+            email: '',
+            emailRules: [v => !!v || 'Введите email'],
+            confirmPassword: '',
+            confirmPasswordRules: [
                 v => v === this.password || 'Пароли не совпадают',
             ],
         }
@@ -167,6 +176,8 @@ export default {
                     .dispatch('login', user)
                     .then(res => {
                         this.auth = this.$store.getters['isLogged']
+                        this.username = ''
+                        this.password = ''
                     })
                     .catch(err => {
                         const msg = err.response.data.msg
@@ -182,14 +193,24 @@ export default {
         },
         registerNewAccount() {
             if (this.$refs.form.validate()) {
-                this.auth = true
-                const newUser = {
-                    name: this.name,
+                const user = {
+                    username: this.username,
+                    email: this.email,
                     password: this.password,
+                    confirm_password: this.confirmPassword,
                 }
-                this.password = ''
-                this.regPassword = ''
-                this.name = ''
+                this.$store
+                    .dispatch('register', user)
+                    .then(res => {
+                        this.auth = this.$store.getters['isLogged']
+                        this.username = ''
+                        this.email = ''
+                        this.password = ''
+                        this.confirmPassword = ''
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
             }
         },
         logout() {
