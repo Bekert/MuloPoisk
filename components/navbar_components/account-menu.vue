@@ -159,7 +159,6 @@ export default {
             this.usernameError = ''
             this.passwordError = ''
             if (this.$refs.form.validate()) {
-                this.auth = true
                 const user = {
                     username: this.username,
                     password: this.password,
@@ -194,7 +193,8 @@ export default {
             }
         },
         logout() {
-            this.auth = false
+            this.$store.dispatch('logout')
+            this.auth = this.$store.getters['isLogged']
         },
     },
 }
