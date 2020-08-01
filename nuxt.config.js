@@ -32,7 +32,7 @@ module.exports = {
     },
     css: ['@/assets/styles/global.sass', '@/assets/styles/_variables.sass'],
     buildModules: ['@nuxtjs/vuetify'],
-    modules: ['@nuxtjs/style-resources'],
+    modules: ['@nuxtjs/style-resources', '@nuxtjs/axios'],
     styleResources: {
         sass: ['@/assets/styles/_variables.sass'],
     },
