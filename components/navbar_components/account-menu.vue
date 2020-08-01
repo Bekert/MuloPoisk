@@ -71,8 +71,9 @@
                     </v-list-item>
                     <v-list-item>
                         <v-text-field
-                            v-model="name"
+                            v-model="username"
                             :rules="nameRules"
+                            :error-messages="usernameError"
                             placeholder="Никнейм"
                         ></v-text-field>
                     </v-list-item>
@@ -80,6 +81,7 @@
                         <v-text-field
                             v-model="password"
                             :rules="passwordRules"
+                            :error-messages="passwordError"
                             placeholder="Пароль"
                         ></v-text-field>
                     </v-list-item>
@@ -90,7 +92,7 @@
                     </v-list-item>
                     <v-list-item>
                         <v-text-field
-                            v-model="name"
+                            v-model="username"
                             :rules="nameRules"
                             placeholder="Придумайте никмейм"
                         ></v-text-field>
@@ -111,9 +113,7 @@
                     </v-list-item>
                 </v-list>
                 <v-card-actions v-if="!reg">
-                    <v-btn :disabled="!valid" @click="login" color="primary"
-                        >Войти</v-btn
-                    >
+                    <v-btn @click="loginUser" color="primary">Войти</v-btn>
                     <v-btn @click="reg = true" color="secondary" dark
                         >Регистрация</v-btn
                     >
@@ -136,10 +136,12 @@
 export default {
     data() {
         return {
-            auth: true,
+            auth: false,
             reg: false,
             valid: false,
-            name: '',
+            usernameError: '',
+            passwordError: '',
+            username: '',
             nameRules: [v => !!v || 'Введите ваш никнейм'],
             password: '',
             passwordRules: [v => !!v || 'Введите пароль'],
@@ -149,15 +151,34 @@ export default {
             ],
         }
     },
+    mounted() {
+        this.auth = this.$store.getters['isLogged']
+    },
     methods: {
-        login() {
+        loginUser() {
+            this.usernameError = ''
+            this.passwordError = ''
             if (this.$refs.form.validate()) {
                 this.auth = true
                 const user = {
-                    name: this.name,
+                    username: this.username,
+                    password: this.password,
                 }
-                this.password = ''
-                this.name = ''
+                this.$store
+                    .dispatch('login', user)
+                    .then(res => {
+                        this.auth = this.$store.getters['isLogged']
+                    })
+                    .catch(err => {
+                        const msg = err.response.data.msg
+
+                        if (msg == 'Данный пользователь не найден') {
+                            this.usernameError = 'Неправильный никнейм'
+                        }
+                        if (msg == 'Неверный пароль') {
+                            this.passwordError = 'Неправильный пароль'
+                        }
+                    })
             }
         },
         registerNewAccount() {
