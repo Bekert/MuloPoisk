@@ -63,159 +63,31 @@
                 >Вход</v-btn
             >
         </template>
-        <v-form ref="form" v-model="valid" lazy-validation>
-            <v-card>
-                <v-list v-if="!reg">
-                    <v-list-item>
-                        <v-list-item-title>Вход</v-list-item-title>
-                    </v-list-item>
-                    <v-list-item>
-                        <v-text-field
-                            v-model="username"
-                            :rules="nameRules"
-                            :error-messages="usernameError"
-                            placeholder="Никнейм"
-                        ></v-text-field>
-                    </v-list-item>
-                    <v-list-item>
-                        <v-text-field
-                            v-model="password"
-                            :rules="passwordRules"
-                            :error-messages="passwordError"
-                            placeholder="Пароль"
-                        ></v-text-field>
-                    </v-list-item>
-                </v-list>
-                <v-list v-else-if="reg">
-                    <v-list-item>
-                        <v-list-item-title>Регистрация</v-list-item-title>
-                    </v-list-item>
-                    <v-list-item>
-                        <v-text-field
-                            v-model="username"
-                            :rules="nameRules"
-                            placeholder="Придумайте никмейм"
-                        ></v-text-field>
-                    </v-list-item>
-                    <v-list-item>
-                        <v-text-field
-                            v-model="email"
-                            :rules="emailRules"
-                            placeholder="Напишите свой email"
-                        ></v-text-field>
-                    </v-list-item>
-                    <v-list-item>
-                        <v-text-field
-                            v-model="password"
-                            :rules="passwordRules"
-                            placeholder="Придумайте пароль"
-                        ></v-text-field>
-                    </v-list-item>
-                    <v-list-item>
-                        <v-text-field
-                            v-model="confirmPassword"
-                            :rules="confirmPasswordRules"
-                            placeholder="Повторите пароль"
-                        ></v-text-field>
-                    </v-list-item>
-                </v-list>
-                <v-card-actions v-if="!reg">
-                    <v-btn @click="loginUser" color="primary">Войти</v-btn>
-                    <v-btn @click="reg = true" color="secondary" dark
-                        >Регистрация</v-btn
-                    >
-                </v-card-actions>
-                <v-card-actions v-else-if="reg">
-                    <v-btn
-                        :disabled="!valid"
-                        @click="registerNewAccount"
-                        color="secondary"
-                        block
-                        >Создать аккаунт</v-btn
-                    >
-                </v-card-actions>
-            </v-card>
-        </v-form>
+        <AuthForm color="white" :renewAuthStatus="renewAuthStatus" />
     </v-menu>
 </template>
 
 <script>
+import AuthForm from './auth-form/AuthForm'
 export default {
     data() {
         return {
             auth: false,
-            reg: false,
-            valid: false,
-            usernameError: '',
-            passwordError: '',
-            username: '',
-            nameRules: [v => !!v || 'Введите ваш никнейм'],
-            password: '',
-            passwordRules: [v => !!v || 'Введите пароль'],
-            email: '',
-            emailRules: [v => !!v || 'Введите email'],
-            confirmPassword: '',
-            confirmPasswordRules: [
-                v => v === this.password || 'Пароли не совпадают',
-            ],
         }
     },
+    components: {
+        AuthForm,
+    },
     mounted() {
-        this.auth = this.$store.getters['isLogged']
+        this.renewAuthStatus()
     },
     methods: {
-        loginUser() {
-            this.usernameError = ''
-            this.passwordError = ''
-            if (this.$refs.form.validate()) {
-                const user = {
-                    username: this.username,
-                    password: this.password,
-                }
-                this.$store
-                    .dispatch('login', user)
-                    .then(res => {
-                        this.auth = this.$store.getters['isLogged']
-                        this.username = ''
-                        this.password = ''
-                    })
-                    .catch(err => {
-                        const msg = err.response.data.msg
-
-                        if (msg == 'Данный пользователь не найден') {
-                            this.usernameError = 'Неправильный никнейм'
-                        }
-                        if (msg == 'Неверный пароль') {
-                            this.passwordError = 'Неправильный пароль'
-                        }
-                    })
-            }
-        },
-        registerNewAccount() {
-            if (this.$refs.form.validate()) {
-                const user = {
-                    username: this.username,
-                    email: this.email,
-                    password: this.password,
-                    confirm_password: this.confirmPassword,
-                }
-                this.$store
-                    .dispatch('register', user)
-                    .then(res => {
-                        this.auth = this.$store.getters['isLogged']
-                        this.username = ''
-                        this.email = ''
-                        this.password = ''
-                        this.confirmPassword = ''
-                    })
-                    .catch(error => {
-                        console.log(error)
-                    })
-            }
-        },
         logout() {
             this.$store.dispatch('logout')
-            this.auth = this.$store.getters['isLogged']
+            this.auth = this.$store.getters.isLogged
+        },
+        renewAuthStatus() {
+            this.auth = this.$store.getters.isLogged
         },
     },
 }

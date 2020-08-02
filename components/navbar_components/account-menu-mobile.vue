@@ -30,117 +30,30 @@
             </v-list-item>
         </v-list>
 
-        <v-form ref="form" v-model="valid" lazy-validation>
-            <v-card color="activePrimary" elevation="0" v-if="!auth">
-                <v-list v-if="!reg">
-                    <v-list-item>
-                        <v-list-item-title>Вход</v-list-item-title>
-                    </v-list-item>
-                    <v-list-item>
-                        <v-text-field
-                            v-model="name"
-                            :rules="nameRules"
-                            placeholder="Никнейм"
-                        ></v-text-field>
-                    </v-list-item>
-                    <v-list-item>
-                        <v-text-field
-                            v-model="password"
-                            :rules="passwordRules"
-                            placeholder="Пароль"
-                        ></v-text-field>
-                    </v-list-item>
-                </v-list>
-                <v-list v-else-if="reg">
-                    <v-list-item>
-                        <v-list-item-title>Регистрация</v-list-item-title>
-                    </v-list-item>
-                    <v-list-item>
-                        <v-text-field
-                            v-model="name"
-                            :rules="nameRules"
-                            placeholder="Придумайте никмейм"
-                        ></v-text-field>
-                    </v-list-item>
-                    <v-list-item>
-                        <v-text-field
-                            v-model="password"
-                            :rules="passwordRules"
-                            placeholder="Придумайте пароль"
-                        ></v-text-field>
-                    </v-list-item>
-                    <v-list-item>
-                        <v-text-field
-                            v-model="passwordReg"
-                            :rules="passwordRegRules"
-                            placeholder="Повторите пароль"
-                        ></v-text-field>
-                    </v-list-item>
-                </v-list>
-                <v-card-actions v-if="!reg">
-                    <v-btn :disabled="!valid" @click="login" color="primary"
-                        >Войти</v-btn
-                    >
-                    <v-btn @click="reg = true" color="secondary" dark
-                        >Регистрация</v-btn
-                    >
-                </v-card-actions>
-                <v-card-actions v-else-if="reg">
-                    <v-btn
-                        :disabled="!valid"
-                        @click="registerNewAccount"
-                        color="secondary"
-                        block
-                        >Создать аккаунт</v-btn
-                    >
-                </v-card-actions>
-            </v-card>
-        </v-form>
+        <AuthForm :renewAuthStatus="renewAuthStatus" color="activePrimary" />
     </div>
 </template>
 
 <script>
+import AuthForm from './auth-form/AuthForm'
 export default {
     data() {
         return {
-            auth: true,
-            reg: false,
-            valid: false,
-            name: '',
-            nameRules: [v => !!v || 'Введите ваш никнейм'],
-            password: '',
-            passwordRules: [v => !!v || 'Введите пароль'],
-            passwordReg: '',
-            passwordRegRules: [
-                v => v === this.password || 'Пароли не совпадают',
-            ],
+            auth: false,
         }
     },
+    components: {
+        AuthForm,
+    },
+    mounted() {
+        this.renewAuthStatus()
+    },
     methods: {
-        login() {
-            if (this.$refs.form.validate()) {
-                this.auth = true
-                const user = {
-                    name: this.name,
-                }
-                this.password = ''
-                this.name = ''
-            }
-        },
-        registerNewAccount() {
-            if (this.$refs.form.validate()) {
-                this.auth = true
-                const newUser = {
-                    name: this.name,
-                    password: this.password,
-                }
-                this.password = ''
-                this.regPassword = ''
-                this.name = ''
-            }
-        },
         logout() {
             this.auth = false
+        },
+        renewAuthStatus() {
+            this.auth = this.$store.getters['isLogged']
         },
     },
 }
