@@ -45,7 +45,7 @@ export const actions = {
         )
         if (res.data.success) {
             await dispatch('login', {
-                username: user.username,
+                email: user.email,
                 password: user.password,
             })
         }
