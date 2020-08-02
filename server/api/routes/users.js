@@ -8,27 +8,85 @@ const passport = require('passport')
 router.post('/register', async (req, res) => {
     if (!req.body.username) {
         return res.status(400).json({
-            msg: 'Введите имя пользователя',
+            msg: 'Введите никнейм',
+            contentType: 'username',
+            errorType: 'empty field',
         })
     } else if (!req.body.email) {
         return res.status(400).json({
-            msg: 'Введите почту',
+            msg: 'Введите email',
+            contentType: 'email',
+            errorType: 'empty field',
         })
     } else if (!req.body.password) {
         return res.status(400).json({
             msg: 'Введите пароль',
+            contentType: 'password',
+            errorType: 'empty field',
         })
     } else if (!req.body.confirm_password) {
         return res.status(400).json({
             msg: 'Подвердите пароль',
+            contentType: 'confirm_password',
+            errorType: 'empty field',
         })
     }
 
     const { username, email, password, confirm_password } = req.body
 
+    const emailRegexp = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
+    const oneLowercaseCharacterRegexp = /(?=.*[a-z])/
+    const oneUppercaseCharacterRegexp = /(?=.*[A-Z])/
+    const oneNumericCharacterRegexp = /(?=.*[0-9])/
+
+    if (!emailRegexp.test(email)) {
+        return res.status(400).json({
+            msg: "Неверный формат email'a",
+            contentType: 'email',
+            errorType: 'incorrect format',
+        })
+    }
+    if (!username.length >= 6) {
+        return res.status(400).json({
+            msg: 'Мин. длина ника 6 символов',
+            contentType: 'username',
+            errorType: 'incorrect format',
+        })
+    }
+    if (!password.length >= 6) {
+        return res.status(400).json({
+            msg: 'Мин. длина пароля 6 символов',
+            contentType: 'password',
+            errorType: 'incorrect format',
+        })
+    }
+    if (!oneLowercaseCharacterRegexp.test(password)) {
+        return res.status(400).json({
+            msg: 'Нет ни одной строчной буквы',
+            contentType: 'password',
+            errorType: 'incorrect format',
+        })
+    }
+    if (!oneUppercaseCharacterRegexp.test(password)) {
+        return res.status(400).json({
+            msg: 'Нет ни одной заглавной буквы',
+            contentType: 'password',
+            errorType: 'incorrect format',
+        })
+    }
+    if (!oneNumericCharacterRegexp.test(password)) {
+        return res.status(400).json({
+            msg: 'Нет ни одной цифры',
+            contentType: 'password',
+            errorType: 'incorrect format',
+        })
+    }
+
     if (password !== confirm_password) {
         return res.status(400).json({
             msg: 'Пароли не совпадают',
+            contentType: 'confirm_passpord',
+            errorType: 'passpords mismatch',
         })
     }
 
@@ -36,7 +94,9 @@ router.post('/register', async (req, res) => {
 
     if (userByName) {
         return res.status(400).json({
-            msg: 'Такой ник уже занят',
+            msg: 'Такой никнейм уже занят',
+            contentType: 'username',
+            errorType: 'already taken',
         })
     }
 
@@ -44,7 +104,9 @@ router.post('/register', async (req, res) => {
 
     if (userByEmail) {
         return res.status(400).json({
-            msg: 'Email уже занят',
+            msg: 'Такой email уже занят',
+            contentType: 'email',
+            errorType: 'already taken',
         })
     }
 
@@ -60,6 +122,8 @@ router.post('/register', async (req, res) => {
                 console.log(err)
                 return res.status(400).json({
                     msg: 'Ошибка',
+                    contentType: 'unknown',
+                    errorType: 'unknown',
                 })
             }
             newUser.password = hash
@@ -73,22 +137,28 @@ router.post('/register', async (req, res) => {
 })
 
 router.post('/login', (req, res) => {
-    const { username, password } = req.body
+    const { email, password } = req.body
 
-    if (!username) {
+    if (!email) {
         return res.status(400).json({
-            msg: 'Введите имя пользователя',
+            msg: 'Введите email',
+            contentType: 'email',
+            errorType: 'empty field',
         })
     } else if (!password) {
         return res.status(400).json({
             msg: 'Введите пароль',
+            contentType: 'password',
+            errorType: 'empty field',
         })
     }
 
-    User.findOne({ username }).then(user => {
+    User.findOne({ email }).then(user => {
         if (!user) {
             return res.status(404).json({
-                msg: 'Данный пользователь не найден',
+                msg: 'Данный email не найден',
+                contentType: 'email',
+                errorType: 'not found',
                 success: false,
             })
         }
@@ -115,6 +185,8 @@ router.post('/login', (req, res) => {
             } else {
                 return res.status(404).json({
                     msg: 'Неверный пароль',
+                    contentType: 'password',
+                    errorType: 'incorrect',
                     success: false,
                 })
             }
