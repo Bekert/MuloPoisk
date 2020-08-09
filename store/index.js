@@ -33,7 +33,7 @@ export const actions = {
             const token = res.data.token
             const user = res.data.user
             localStorage.setItem('token', token)
-            this.$axios.defaults.headers.common['Authorization'] = token
+            this.$axios.setToken(token, 'Bearer')
             commit('login_success', [token, user])
         }
         return res
@@ -53,7 +53,7 @@ export const actions = {
     logout({ commit }) {
         localStorage.removeItem('token')
         commit('logout')
-        delete this.$axios.defaults.headers.common['Authorization']
+        this.$axios.setToken(false)
         return
     },
 }
