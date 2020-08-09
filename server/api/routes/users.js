@@ -177,7 +177,7 @@ router.post('/login', (req, res) => {
                         res.status(200).json({
                             success: true,
                             user: user,
-                            token: `Bearer ${token}`,
+                            token: token,
                             msg: 'Вы вошли',
                         })
                     }
