@@ -14,10 +14,26 @@ const UserSchema = new Schema({
         type: String,
         required: true,
     },
-    date: {
+    regDate: {
         type: Date,
         default: Date.now,
     },
+    filmCollection: {
+        type: [Object],
+        required: false,
+    },
 })
+
+// [
+//     {
+//         film: 'Pepega',
+//         rate: 8,
+//         rateDate: Date.now
+//         lists: {
+//             lovely: Date.now,
+//             wantToWatch: Date.now
+//         },
+//     },
+// ]
 
 module.exports = User = mongoose.model('users', UserSchema)
