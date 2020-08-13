@@ -1,30 +1,5 @@
-export const state = () => ({
-    token: '',
-    user: {},
-    status: '',
-})
-
-export const getters = {
-    isLogged: state => !!state.token,
-    authStatus: state => state.status,
-    user: state => state.user,
-}
-
-export const mutations = {
-    login_success(state, params) {
-        state.token = params[0]
-        state.user = params[1]
-        state.status = 'success'
-    },
-    logout(state) {
-        state.status = ''
-        state.user = ''
-        state.token = ''
-    },
-}
-
 export const actions = {
-    async login({ commit }, user) {
+    async login(user) {
         let res = await this.$axios.post(
             'http://localhost:3000/api/users/login',
             user
@@ -32,13 +7,11 @@ export const actions = {
         if (res.data.success) {
             const token = res.data.token
             const user = res.data.user
-            localStorage.setItem('token', token)
-            this.$axios.setToken(token, 'Bearer')
-            commit('login_success', [token, user])
+            this.$cookies.set('token', token)
         }
         return res
     },
-    async register({ commit, dispatch }, user) {
+    async register({ dispatch }, user) {
         let res = await this.$axios.post(
             'http://localhost:3000/api/users/register',
             user
@@ -50,10 +23,15 @@ export const actions = {
             })
         }
     },
-    logout({ commit }) {
-        localStorage.removeItem('token')
-        commit('logout')
-        this.$axios.setToken(false)
+    logout() {
+        this.$cookies.remove('token')
         return
+    },
+    async hahaha(token) {
+        const res = await this.$axios.get(
+            'http://localhost:3000/api/users/profile',
+            { headers: { 'Authorization': `Bearer ${token}` } }
+        )
+        return res
     },
 }
