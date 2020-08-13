@@ -23,7 +23,7 @@
                     max-width="40px"
                 >
                     <v-img src="/img/account-image.jpg"></v-img> </v-avatar
-                >{{ $store.state.user.username }}
+                >pepegert
             </v-btn>
         </template>
         <v-list color="primary" dark class="pa-0 no-border-radius">
