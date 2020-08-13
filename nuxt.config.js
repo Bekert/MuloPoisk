@@ -33,7 +33,7 @@ module.exports = {
     css: ['@/assets/styles/global.sass', '@/assets/styles/_variables.sass'],
     plugins: [{ src: '@/plugins/localStorage.js', ssr: false }],
     buildModules: ['@nuxtjs/vuetify'],
-    modules: ['@nuxtjs/style-resources', '@nuxtjs/axios'],
+    modules: ['@nuxtjs/style-resources', '@nuxtjs/axios', 'cookie-universal-nuxt'],
     styleResources: {
         sass: ['@/assets/styles/_variables.sass'],
     },
