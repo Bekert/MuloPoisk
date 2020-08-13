@@ -6,10 +6,10 @@
                     <v-list-item-title>Настройки:</v-list-item-title>
                 </v-list-item>
                 <v-list-item>
-                    <v-text-field placeholder="Никнейм"></v-text-field>
+                    <v-text-field placeholder="Никнейм" :value="user.username"></v-text-field>
                 </v-list-item>
                 <v-list-item>
-                    <v-text-field placeholder="Почта"></v-text-field>
+                    <v-text-field placeholder="Почта" :value="user.email"></v-text-field>
                 </v-list-item>
             </v-list>
         </v-col>
@@ -18,6 +18,24 @@
 
 <script>
 export default {
+    async asyncData({ app, redirect, $axios }) {
+        try {
+            const res = await $axios.get(
+                'http://localhost:3000/api/users/profile',
+                {
+                    headers: {
+                        Authorization: `Bearer ${app.$cookies.get('token')}`,
+                    },
+                }
+            )
+            return { user: res.data.user }
+        } catch {
+            redirect('/')
+        }
+    },
     data: () => ({}),
+    mounted() {
+        console.log(this.user)
+    },
 }
 </script>
